@@ -1,0 +1,163 @@
+---
+import { zones, site } from "../data/site";
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`;
+---
+
+<section class="section section--gray" id="cobertura">
+  <div class="container cov__grid">
+    <div class="cov__copy">
+      <span class="eyebrow">Cobertura</span>
+      <h2>Estamos cerca de ti en Lima Sur</h2>
+      <p>Atención presencial en nuestra oficina y servicio 100% virtual en toda Lima Metropolitana y provincias.</p>
+      <ul class="cov__zones">
+        {zones.map((z) => (
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {z}
+          </li>
+        ))}
+        <li class="cov__more">y más distritos…</li>
+      </ul>
+    </div>
+
+    <a class="cov__map reveal" href={mapsLink} target="_blank" rel="noopener" aria-label="Abrir la ubicación en Google Maps">
+      <div class="cov__map-grid" aria-hidden="true"></div>
+      <div class="cov__map-route" aria-hidden="true"></div>
+      <div class="cov__pin" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
+      </div>
+      <div class="cov__map-card">
+        <strong>{site.address}</strong>
+        <span>San Juan de Miraflores, Lima</span>
+        <span class="cov__map-cta">Abrir en Google Maps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cov__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .cov__copy p {
+    color: var(--gray-500);
+    margin: 14px 0 24px;
+    max-width: 460px;
+  }
+  .cov__zones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .cov__zones li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .cov__zones svg {
+    width: 20px;
+    height: 20px;
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+  .cov__more {
+    color: var(--gray-400);
+    font-style: italic;
+  }
+  .cov__map {
+    position: relative;
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 340px;
+    background: linear-gradient(135deg, #e9eef7, #dde6f5);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .cov__map:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  .cov__map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(8, 43, 102, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(8, 43, 102, 0.06) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+  .cov__map-route {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(115deg, transparent 42%, var(--blue-light) 42%, var(--blue-light) 46%, transparent 46%),
+      linear-gradient(60deg, transparent 66%, #cdd8ec 66%, #cdd8ec 69%, transparent 69%);
+    opacity: 0.6;
+  }
+  .cov__pin {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 46px;
+    height: 46px;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+    animation: pin-bounce 2.4s ease-in-out infinite;
+  }
+  @keyframes pin-bounce {
+    0%, 100% { transform: translate(-50%, -100%); }
+    50% { transform: translate(-50%, -112%); }
+  }
+  .cov__map-card {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    right: 16px;
+    display: grid;
+    gap: 2px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .cov__map-card strong {
+    color: var(--navy);
+    font-size: 0.95rem;
+  }
+  .cov__map-card span {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+  }
+  .cov__map-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--blue) !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .cov__map-cta svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  @media (max-width: 820px) {
+    .cov__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 420px) {
+    .cov__zones {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

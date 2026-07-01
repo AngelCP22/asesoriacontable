@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={`Política de Privacidad | ${site.legalName}`} description="Política de privacidad y tratamiento de datos personales de Asesoría Contable, Tributaria y Laboral, conforme a la Ley N.° 29733.">
+  <Header />
+  <main id="contenido" class="legal">
+    <div class="container legal__inner">
+      <span class="eyebrow">Legal</span>
+      <h1>Política de Privacidad</h1>
+      <p class="legal__intro">
+        En <strong>{site.legalName}</strong> respetamos tu privacidad y protegemos
+        tus datos personales conforme a la Ley N.° 29733 — Ley de Protección de
+        Datos Personales del Perú y su reglamento.
+      </p>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <p>Los datos que nos proporcionas son tratados por {site.legalName}, con oficina en {site.address}, San Juan de Miraflores, Lima. Contacto: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+      <h2>2. Datos que recopilamos</h2>
+      <p>Recopilamos únicamente los datos que envías voluntariamente a través del formulario de contacto o de WhatsApp: nombre, número de celular y el mensaje con tu consulta.</p>
+
+      <h2>3. Finalidad</h2>
+      <p>Usamos tus datos exclusivamente para responder tu consulta, elaborar cotizaciones y brindarte nuestros servicios de asesoría contable, tributaria y laboral. No los compartimos ni vendemos a terceros.</p>
+
+      <h2>4. Conservación</h2>
+      <p>Conservamos tus datos mientras exista una relación comercial o mientras no solicites su eliminación.</p>
+
+      <h2>5. Tus derechos (ARCO)</h2>
+      <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiéndonos a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+      <h2>6. Servicios de terceros</h2>
+      <p>Este sitio utiliza Google Fonts para la tipografía y Google Maps para mostrar nuestra ubicación; ambos pueden registrar tu dirección IP conforme a sus propias políticas. También usamos WhatsApp como canal de contacto.</p>
+
+      <p class="legal__back"><a href={import.meta.env.BASE_URL}>← Volver al inicio</a></p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal {
+    padding: 60px 0 80px;
+  }
+  .legal__inner {
+    max-width: 780px;
+  }
+  .legal h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin: 8px 0 20px;
+  }
+  .legal__intro {
+    font-size: 1.1rem;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+  }
+  .legal h2 {
+    font-size: 1.2rem;
+    margin: 30px 0 8px;
+  }
+  .legal p {
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.7;
+  }
+  .legal a {
+    color: var(--blue);
+    font-weight: 500;
+  }
+  .legal__back {
+    margin-top: 36px;
+    font-weight: 600;
+  }
+</style>

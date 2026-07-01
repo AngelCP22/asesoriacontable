@@ -1,0 +1,52 @@
+---
+import { reasons } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section class="section" id="ventajas">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">¿Por qué elegirnos?</span>
+      <h2>La tranquilidad de estar en buenas manos</h2>
+      <p>Más que un servicio, un equipo comprometido con el crecimiento de tu empresa.</p>
+    </div>
+
+    <div class="why__grid">
+      {reasons.map((r) => (
+        <div class="why__item reveal">
+          <div class="icon-box"><Icon name={r.icon} /></div>
+          <div>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 40px;
+  }
+  .why__item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .why__item h3 {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .why__item p {
+    color: var(--gray-500);
+    font-size: 0.97rem;
+  }
+  @media (max-width: 720px) {
+    .why__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

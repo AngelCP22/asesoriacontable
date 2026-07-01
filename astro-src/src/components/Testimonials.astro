@@ -1,0 +1,133 @@
+---
+import { testimonials, site } from "../data/site";
+---
+
+<section class="section" id="resenas">
+  <div class="container">
+    <div class="testi__head">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="eyebrow">Reseñas</span>
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="testi__score">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.5-.2-2.3H12v4.4h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.5z"/><path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.4 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.6 14.7a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 6.9l3.8 3a6.9 6.9 0 0 1 6.4-5z"/></svg>
+        <div>
+          <strong>{site.rating} / 5</strong>
+          <span class="stars">★★★★★</span>
+        </div>
+        <p>Basado en +{site.reviews} reseñas en Google</p>
+      </div>
+    </div>
+
+    <div class="testi__grid">
+      {testimonials.map((t) => (
+        <figure class="card testi reveal">
+          <div class="testi__stars">★★★★★</div>
+          <blockquote>“{t.text}”</blockquote>
+          <figcaption>
+            <span class="testi__avatar">{t.name.charAt(0)}</span>
+            <span>
+              <strong>{t.name}</strong>
+              <em>{t.role}</em>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .testi__score {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 2px 12px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 14px 20px;
+  }
+  .testi__score strong {
+    font-size: 1.2rem;
+    color: var(--navy);
+  }
+  .testi__score .stars {
+    display: block;
+    color: #ffc531;
+    letter-spacing: 2px;
+  }
+  .testi__score p {
+    grid-column: 1 / -1;
+    font-size: 0.82rem;
+    color: var(--gray-500);
+    margin-top: 4px;
+  }
+
+  .testi__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .testi {
+    padding: 28px 26px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .testi:hover {
+    box-shadow: var(--shadow);
+  }
+  .testi__stars {
+    color: #ffc531;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .testi blockquote {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.98rem;
+    flex-grow: 1;
+  }
+  .testi figcaption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--gray-100);
+  }
+  .testi__avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    font-weight: 700;
+  }
+  .testi figcaption strong {
+    display: block;
+    font-size: 0.95rem;
+  }
+  .testi figcaption em {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--gray-500);
+  }
+
+  @media (max-width: 900px) {
+    .testi__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

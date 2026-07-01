@@ -1,0 +1,138 @@
+---
+import { values, waLink } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section class="section section--gray" id="nosotros">
+  <div class="container about__grid">
+    <div class="about__visual reveal">
+      <div class="about__panel">
+        <div class="about__badge">
+          <strong>+10</strong>
+          <span>años de experiencia</span>
+        </div>
+        <ul class="about__stats">
+          <li><Icon name="person" /> Equipo de contadores colegiados</li>
+          <li><Icon name="shield" /> Confidencialidad garantizada</li>
+          <li><Icon name="clock" /> Respuesta el mismo día</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <span class="eyebrow">Conócenos</span>
+      <h2>Profesionales a tu servicio</h2>
+      <p class="about__lead">
+        Somos un equipo de contadores y asesores especializados en brindar
+        soluciones contables, con enfoque en el cumplimiento, la optimización y
+        el crecimiento empresarial. Trabajamos cerca de ti para que tomes
+        decisiones con información clara y confiable.
+      </p>
+      <ul class="about__values">
+        {values.map((v) => (
+          <li><Icon name="check" /> {v}</li>
+        ))}
+      </ul>
+      <a class="btn btn--primary" href={waLink} target="_blank" rel="noopener">
+        Conversemos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .about__panel {
+    position: relative;
+    background: linear-gradient(155deg, var(--navy), #0c46ad);
+    border-radius: 22px;
+    padding: 40px 32px;
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .about__panel::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(111, 168, 255, 0.18);
+    right: -70px;
+    bottom: -70px;
+  }
+  .about__badge {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--blue);
+    padding: 16px 22px;
+    border-radius: 16px;
+    margin-bottom: 26px;
+  }
+  .about__badge strong {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .about__badge span {
+    font-size: 0.85rem;
+    color: #dbe6ff;
+  }
+  .about__stats {
+    position: relative;
+    display: grid;
+    gap: 16px;
+  }
+  .about__stats li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.98rem;
+    color: #e7efff;
+  }
+  .about__stats :global(svg) {
+    width: 22px;
+    height: 22px;
+    color: var(--blue-light);
+    flex-shrink: 0;
+  }
+
+  .about__lead {
+    margin-top: 16px;
+    color: var(--gray-500);
+    font-size: 1.05rem;
+  }
+  .about__values {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0 28px;
+  }
+  .about__values li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+  .about__values :global(svg) {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    border-radius: 50%;
+    background: rgba(31, 94, 255, 0.12);
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 860px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+</style>

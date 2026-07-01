@@ -1,0 +1,84 @@
+---
+import { services, waLink } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section class="section section--gray" id="servicios">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nuestros servicios</span>
+      <h2>Soluciones que impulsan tu negocio</h2>
+      <p>Un solo aliado para toda tu gestión contable, tributaria y laboral.</p>
+    </div>
+
+    <div class="services__grid">
+      {services.map((s) => (
+        <article class="card service reveal">
+          <div class="icon-box"><Icon name={s.icon} /></div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <a class="service__link" href={waLink} target="_blank" rel="noopener">
+            Saber más
+            <Icon name="arrow" cls="service__arrow" />
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .service {
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .service:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: transparent;
+  }
+  .service h3 {
+    font-size: 1.2rem;
+    margin: 18px 0 10px;
+  }
+  .service p {
+    color: var(--gray-500);
+    font-size: 0.96rem;
+    flex-grow: 1;
+  }
+  .service__link {
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .service__link :global(.service__arrow) {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+  .service__link:hover :global(.service__arrow) {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .services__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

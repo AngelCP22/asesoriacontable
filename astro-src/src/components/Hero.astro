@@ -1,0 +1,286 @@
+---
+import { waLink, zones } from "../data/site";
+const bullets = [
+  "Cumplimiento garantizado",
+  "Optimización financiera",
+  "Ahorro de impuestos legal",
+  "Asesoría cercana y confiable",
+];
+---
+
+<section class="hero" id="inicio">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Soluciones contables, tributarias y laborales</span>
+      <h1>Tu empresa en regla,<br /><span class="accent">tu crecimiento asegurado.</span></h1>
+      <p class="hero__lead">
+        Diseñamos estrategias personalizadas para que cumplas con SUNAT y
+        alcances tus objetivos financieros a corto y largo plazo.
+      </p>
+
+      <ul class="hero__checks">
+        {bullets.map((b) => (
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {b}
+          </li>
+        ))}
+      </ul>
+
+      <div class="hero__actions">
+        <a class="btn btn--wa" href={waLink} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+          Agenda tu asesoría gratuita
+        </a>
+        <a class="btn btn--ghost" href="#servicios">Conoce nuestros servicios</a>
+      </div>
+
+      <div class="hero__zones">
+        <span class="hero__zones-label">Zonas que atendemos</span>
+        <div class="hero__zones-list">
+          {zones.slice(0, 4).map((z) => <span class="chip">{z}</span>)}
+          <span class="chip chip--more">+ más</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual de confianza -->
+    <div class="hero__visual">
+      <div class="trust-card">
+        <span class="trust-card__eyebrow">Asesoría integral para</span>
+        <h3 class="trust-card__title">Empresas y Emprendedores</h3>
+        <ul class="trust-card__list">
+          <li><span class="dot"></span>+200 clientes satisfechos</li>
+          <li><span class="dot"></span>Estrategias a medida</li>
+          <li><span class="dot"></span>Resultados comprobados</li>
+        </ul>
+        <div class="trust-card__rating">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.5-.2-2.3H12v4.4h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.5z"/><path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.4 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.6 14.7a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 6.9l3.8 3a6.9 6.9 0 0 1 6.4-5z"/></svg>
+          <div>
+            <strong>4.9 / 5</strong>
+            <span>Reseñas en Google</span>
+          </div>
+          <div class="stars" aria-label="4.9 de 5 estrellas">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="mini-card mini-card--a">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1F5EFF" stroke-width="1.8"><path d="M4 19h16M6 16V9M11 16V5M16 16v-4M20 16V7"/></svg>
+        <span>Crecimiento sostenible</span>
+      </div>
+      <div class="mini-card mini-card--b">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3zM9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Cumplimiento SUNAT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--gray-50);
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(1100px 520px at 88% -8%, rgba(31, 94, 255, 0.14), transparent 60%),
+      radial-gradient(760px 420px at 8% 110%, rgba(8, 43, 102, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .hero__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+    padding: 70px 0 80px;
+  }
+
+  .hero__copy h1 {
+    font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+    margin: 4px 0 0;
+  }
+  .accent {
+    color: var(--blue);
+  }
+  .hero__lead {
+    margin-top: 20px;
+    color: var(--gray-500);
+    font-size: 1.1rem;
+    max-width: 500px;
+  }
+
+  .hero__checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 22px;
+    margin-top: 26px;
+  }
+  .hero__checks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .hero__checks svg {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    border-radius: 50%;
+    background: rgba(31, 94, 255, 0.12);
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .hero__zones {
+    margin-top: 34px;
+  }
+  .hero__zones-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+  }
+  .hero__zones-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip--more {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  /* Visual */
+  .hero__visual {
+    position: relative;
+    min-height: 400px;
+  }
+  .trust-card {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(160deg, var(--navy), #0b3f9e);
+    color: #fff;
+    border-radius: 22px;
+    padding: 32px 30px;
+    box-shadow: var(--shadow-lg);
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  .trust-card__eyebrow {
+    font-size: 0.85rem;
+    color: var(--blue-light);
+  }
+  .trust-card__title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 4px 0 20px;
+  }
+  .trust-card__list {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .trust-card__list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.98rem;
+    color: #e7efff;
+  }
+  .trust-card__list .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    flex-shrink: 0;
+  }
+  .trust-card__rating {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 4px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .trust-card__rating strong {
+    display: block;
+    font-size: 1.05rem;
+  }
+  .trust-card__rating span {
+    font-size: 0.8rem;
+    color: #c4d5f5;
+  }
+  .trust-card__rating .stars {
+    grid-column: 1 / -1;
+    color: #ffc531;
+    letter-spacing: 3px;
+    font-size: 1.05rem;
+  }
+
+  .mini-card {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .mini-card svg {
+    width: 22px;
+    height: 22px;
+  }
+  .mini-card--a {
+    top: 10px;
+    right: 0;
+  }
+  .mini-card--b {
+    bottom: 12px;
+    left: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: 44px;
+      padding: 48px 0 60px;
+    }
+    .hero__visual {
+      min-height: 0;
+      order: -1;
+    }
+    .mini-card--a { right: -4px; }
+    .mini-card--b { left: -4px; }
+  }
+  @media (max-width: 520px) {
+    .hero__checks {
+      grid-template-columns: 1fr;
+    }
+    .mini-card {
+      display: none;
+    }
+  }
+</style>

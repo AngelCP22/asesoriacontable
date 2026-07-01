@@ -1,0 +1,62 @@
+---
+import { metrics } from "../data/site";
+---
+
+<section class="metrics">
+  <div class="container metrics__grid">
+    {metrics.map((m) => (
+      <div class="metrics__item reveal">
+        <span class="metrics__value">{m.value}</span>
+        <span class="metrics__label">{m.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .metrics {
+    background: var(--navy);
+    color: #fff;
+  }
+  .metrics__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px 0;
+  }
+  .metrics__item {
+    text-align: center;
+    position: relative;
+  }
+  .metrics__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .metrics__value {
+    display: block;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--blue-light);
+    line-height: 1;
+  }
+  .metrics__label {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.92rem;
+    color: #cfe0ff;
+  }
+  @media (max-width: 720px) {
+    .metrics__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 12px;
+    }
+    .metrics__item:nth-child(2)::after {
+      display: none;
+    }
+  }
+</style>
