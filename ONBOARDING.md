@@ -3,6 +3,29 @@
 > Estado al **2026-07-02**. Landing del estudio de Asesoría Contable, Tributaria y
 > Laboral (Lima Sur). Léelo antes de tocar nada.
 
+## Qué se hizo en la sesión 2026-07-02 — parte 2 (foto real + fuera Google)
+
+Ed compartió el **afiche original** del estudio (quedó en
+`C:\Users\ed\Pictures\Screenshots\Captura de pantalla 2026-07-02 233425.png`).
+El titular es **Yakel Marcatoma Pozo, C.P.C. 8413**. Cambios:
+
+- ✅ **Foto real del contador**: recortada del afiche (círculo, con PIL) →
+  `public/assets/contador.png` (600×600, PNG transparente). El Hero la detecta
+  solo. Es un recorte de ~200 px reescalado: si el cliente pasa una foto en
+  mejor resolución, reemplazar ese archivo y listo.
+- ✅ Hero: foto ahora **circular con anillo navy** (como el afiche) + placa con
+  nombre y C.P.C. La tarjeta "150+ empresas ★ 4.9 Google" se eliminó.
+- ✅ **Fuera todo lo de Google reseñas** (pedido explícito de Ed, eran datos
+  inventados): tarjeta 4.9/5 de Testimonials, item Google de la trustbar,
+  `aggregateRating` del JSON-LD, y campos `site.rating`/`site.reviews`.
+  En su lugar: `site.accountant` (nombre + C.P.C.), `founder` en JSON-LD,
+  y credencial del contador en trustbar/hero/About (`.about__founder`).
+- ✅ **Miniaturas SVG del blog** generadas (blog-tributario/contable/laboral.svg)
+  y conectadas vía `resources[].img`.
+- Verificado: build OK, consola limpia, imágenes 200 + decodifican, sin overflow.
+  Ojo: en el preview el `window.scrollTo` no persiste entre evals y el screenshot
+  da timeout; las imágenes lazy se validaron por fetch+decode.
+
 ## Qué se hizo en la sesión 2026-07-02 (alineación al mockup)
 
 Ed compartió el mockup completo (desktop + móvil) y se alineó el sitio a él:
@@ -12,11 +35,9 @@ Ed compartió el mockup completo (desktop + móvil) y se alineó el sitio a él:
   negocio"), píldora superior, 3 checks, 3 CTAs (Agenda una consulta / Cotiza
   ahora / Hablar por WhatsApp) y **foto del contador** con tarjeta flotante
   "Más de 150+ empresas · 4.9/5 en Google".
-- **📸 FOTO PENDIENTE**: la foto real del contador NO está en el repo (solo llegó
-  dentro del mockup, no como archivo suelto). El Hero busca en build-time
-  `public/assets/contador.webp|jpg|png` y la usa automáticamente; mientras no
-  exista muestra `contador-placeholder.svg` (ilustración de marca). **Pedir a Ed
-  la foto real y guardarla como `astro-src/public/assets/contador.jpg`.**
+- ~~📸 FOTO PENDIENTE~~ **RESUELTO en parte 2**: `contador.png` ya existe
+  (recorte del afiche). El mecanismo de detección build-time sigue activo
+  (`contador.webp` > `.jpg` > `.png` > placeholder).
 - **Metrics.astro → barra de confianza** del mockup (datos en `site.ts → trustbar`):
   Google 4.9★ · SUNAT aliados estratégicos · Atención en S.J.M. y Lima
   Metropolitana · +10 años. El array `metrics` viejo sigue en site.ts por si se

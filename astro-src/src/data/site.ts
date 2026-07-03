@@ -21,9 +21,11 @@ export const site = {
   hours: "Lun – Vie · 9:00 a.m. – 6:00 p.m.",
   hoursSat: "Sábados · 9:00 a.m. – 1:00 p.m.",
   mapsQuery: "Manuel Scorza, San Juan de Miraflores, Lima, Perú",
-  // Reputación
-  rating: "4.9",
-  reviews: "60",
+  // Titular del estudio (del afiche oficial)
+  accountant: {
+    name: "Yakel Marcatoma Pozo",
+    cpc: "C.P.C. 8413",
+  },
   // Redes
   social: {
     facebook: "#",
@@ -64,16 +66,20 @@ export const metrics = [
   { value: "98%", label: "Cumplimiento a tiempo" },
 ];
 
-// Barra de confianza bajo el hero (mockup: Google · SUNAT · zona · experiencia)
+// Barra de confianza bajo el hero (CPC · SUNAT · zona · experiencia)
 export const trustbar = [
-  { icon: "google", title: "4.9 ★★★★★", label: "Reseñas en Google" },
-  { icon: "shield", title: "SUNAT", label: "Aliados estratégicos" },
+  {
+    icon: "badge",
+    title: "Yakel Marcatoma Pozo",
+    label: "Contador Público Colegiado · C.P.C. 8413",
+  },
+  { icon: "shield", title: "SUNAT", label: "Atención a fiscalizaciones" },
   {
     icon: "pin",
     title: "Atención en San Juan de Miraflores",
     label: "y Lima Metropolitana",
   },
-  { icon: "badge", title: "Más de 10 años", label: "de experiencia" },
+  { icon: "person", title: "Más de 10 años", label: "de experiencia" },
 ];
 
 // Proceso de trabajo (mockup: "Nuestro proceso es simple y eficaz")
@@ -213,17 +219,20 @@ export const resources = [
     date: "Jun 2026",
     title: "Nuevas tasas de percepción 2026 y su impacto en tu negocio",
     text: "Qué cambió, a quién afecta y cómo evitar pagar de más este año.",
+    img: "assets/blog-tributario.svg",
   },
   {
     tag: "Contable",
     date: "May 2026",
     title: "Errores comunes en libros electrónicos y cómo evitarlos",
     text: "Los 5 fallos más frecuentes en el PLE/SIRE que generan observaciones.",
+    img: "assets/blog-contable.svg",
   },
   {
     tag: "Laboral",
     date: "Abr 2026",
     title: "Beneficios de una buena gestión laboral en tu empresa",
     text: "Planillas al día, menos multas y colaboradores más tranquilos.",
+    img: "assets/blog-laboral.svg",
   },
 ];

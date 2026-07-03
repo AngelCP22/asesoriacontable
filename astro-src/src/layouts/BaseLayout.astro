@@ -63,12 +63,12 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
         addressCountry: "PE",
       },
       areaServed: "Lima Sur",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: site.rating,
-        reviewCount: site.reviews,
+      founder: {
+        "@type": "Person",
+        name: site.accountant.name,
+        jobTitle: "Contador Público Colegiado",
       },
-      openingHours: "Mo-Fr 09:00-18:00",
+      openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"],
     })} />
   </head>
   <body>

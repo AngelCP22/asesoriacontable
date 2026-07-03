@@ -1,6 +1,8 @@
 ---
-import { values, waLink } from "../data/site";
+import { values, waLink, site } from "../data/site";
 import Icon from "./Icon.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="section section--gray" id="nosotros">
@@ -33,6 +35,15 @@ import Icon from "./Icon.astro";
           <li><Icon name="check" /> {v}</li>
         ))}
       </ul>
+
+      <div class="about__founder">
+        <img src={`${base}assets/contador.png`} alt={site.accountant.name} width="64" height="64" loading="lazy" />
+        <div>
+          <strong>{site.accountant.name}</strong>
+          <span>Contador Público Colegiado · {site.accountant.cpc}</span>
+        </div>
+      </div>
+
       <a class="btn btn--primary" href={waLink} target="_blank" rel="noopener">
         Conversemos por WhatsApp
       </a>
@@ -119,6 +130,34 @@ import Icon from "./Icon.astro";
     gap: 10px;
     font-weight: 500;
   }
+  .about__founder {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 12px 18px;
+    margin-bottom: 26px;
+    max-width: 420px;
+  }
+  .about__founder img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px var(--navy);
+  }
+  .about__founder strong {
+    display: block;
+    color: var(--navy);
+    font-size: 0.98rem;
+  }
+  .about__founder span {
+    font-size: 0.82rem;
+    color: var(--gray-500);
+  }
+
   .about__values :global(svg) {
     width: 22px;
     height: 22px;
