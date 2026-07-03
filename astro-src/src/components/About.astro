@@ -18,6 +18,14 @@ const base = import.meta.env.BASE_URL;
           <li><Icon name="shield" /> Confidencialidad garantizada</li>
           <li><Icon name="clock" /> Respuesta el mismo día</li>
         </ul>
+        <div class="about__entities">
+          <span>Gestionamos trámites ante:</span>
+          <div class="about__entities-list">
+            {["SUNAT", "SUNAFIL", "EsSalud", "SIS", "INEI", "AFP"].map((e) => (
+              <span class="about__entity">{e}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -37,7 +45,7 @@ const base = import.meta.env.BASE_URL;
       </ul>
 
       <div class="about__founder">
-        <img src={`${base}assets/contador.png`} alt={site.accountant.name} width="64" height="64" loading="lazy" />
+        <img src={`${base}assets/contador.webp`} alt={site.accountant.name} width="64" height="64" loading="lazy" />
         <div>
           <strong>{site.accountant.name}</strong>
           <span>Contador Público Colegiado · {site.accountant.cpc}</span>
@@ -112,6 +120,32 @@ const base = import.meta.env.BASE_URL;
     height: 22px;
     color: var(--blue-light);
     flex-shrink: 0;
+  }
+  .about__entities {
+    position: relative;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .about__entities > span {
+    display: block;
+    font-size: 0.78rem;
+    color: #c4d5f5;
+    margin-bottom: 10px;
+  }
+  .about__entities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .about__entity {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
   }
 
   .about__lead {

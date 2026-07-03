@@ -3,7 +3,27 @@
 > Estado al **2026-07-02**. Landing del estudio de Asesoría Contable, Tributaria y
 > Laboral (Lima Sur). Léelo antes de tocar nada.
 
-## Qué se hizo en la sesión 2026-07-02 — parte 2 (foto real + fuera Google)
+## Qué se hizo en la sesión 2026-07-03 (foto HD + set de iconos + extras)
+
+Ed entregó dos assets generados (están en `C:\Users\ed\Downloads\ChatGPT Image
+2 jul 2026, 11_52_24 p.m..png` = lámina de iconos, y `...11_56_04 p.m..png` =
+foto HD del contador, ambos 1254×1254):
+
+- ✅ **Foto HD del contador** → `public/assets/contador.webp` (800×800, 43 KB,
+  máscara circular con PIL). Reemplaza al recorte de baja resolución
+  (`contador.png` eliminado). El Hero la toma solo (webp es el 1er candidato);
+  About también la usa.
+- ✅ **Iconos de la lámina** recreados como paths SVG en Icon.astro (`calc`,
+  `declarations`, `laptop`, `payroll`, `scales`, `bank`) y **remapeados los 10
+  servicios** para calzar con la lámina (Contabilidad=calculadora,
+  Declaraciones=documentos, Libros Electrónicos=laptop, Planillas=personas,
+  Asesoría Tributaria=balanza, Legalización=edificio legal, etc.).
+- ✅ **Chips de entidades** en el panel de About (SUNAT, SUNAFIL, EsSalud, SIS,
+  INEI, AFP — los logos del afiche, como texto para no piratear logos).
+- ✅ Botón **"Ver más artículos"** en Recursos (estaba en el mockup).
+- Verificado: build OK, consola limpia, 10 iconos únicos, sin overflow.
+
+## Sesión 2026-07-02 — parte 2 (foto del afiche + fuera Google)
 
 Ed compartió el **afiche original** del estudio (quedó en
 `C:\Users\ed\Pictures\Screenshots\Captura de pantalla 2026-07-02 233425.png`).

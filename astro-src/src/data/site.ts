@@ -92,22 +92,22 @@ export const process = [
 
 export const services = [
   {
-    icon: "ledger",
+    icon: "calc",
     title: "Contabilidad",
     text: "Llevamos tu contabilidad manual y computarizada (RUS, RER, MYPE, RG).",
   },
   {
-    icon: "tax",
+    icon: "declarations",
     title: "Declaraciones Mensuales",
     text: "Elaboración y presentación de declaraciones (RENTA, IGV, PLAME y más).",
   },
   {
-    icon: "book",
+    icon: "laptop",
     title: "Libros Electrónicos",
     text: "Registro y presentación de Libros Electrónicos PLE/SIRE con total cumplimiento.",
   },
   {
-    icon: "labor",
+    icon: "payroll",
     title: "Planillas y Laboral",
     text: "Gestión de planillas, CTS, gratificaciones, boletas y cumplimiento laboral.",
   },
@@ -117,7 +117,7 @@ export const services = [
     text: "Constitución de empresas EIRL, SAC, SRL y obtención de RUC.",
   },
   {
-    icon: "advisor",
+    icon: "scales",
     title: "Asesoría Tributaria",
     text: "Planeamiento tributario, atención a fiscalizaciones SUNAT y defensa de contingencias.",
   },
@@ -127,12 +127,12 @@ export const services = [
     text: "Devoluciones de IGV, percepciones, detracciones y otros trámites ante SUNAT.",
   },
   {
-    icon: "gear",
+    icon: "handshake",
     title: "Outsourcing Contable",
     text: "Externaliza tu contabilidad con seguridad, eficiencia y ahorro.",
   },
   {
-    icon: "stamp",
+    icon: "bank",
     title: "Legalización de Libros",
     text: "Legalización de libros contables y actualización de contabilidades atrasadas.",
   },
