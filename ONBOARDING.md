@@ -1,9 +1,42 @@
 # ONBOARDING / Traspaso — Asesoría Contable
 
-> Estado al **2026-07-01**. Landing del estudio de Asesoría Contable, Tributaria y
+> Estado al **2026-07-02**. Landing del estudio de Asesoría Contable, Tributaria y
 > Laboral (Lima Sur). Léelo antes de tocar nada.
 
-## Qué se hizo en esta sesión
+## Qué se hizo en la sesión 2026-07-02 (alineación al mockup)
+
+Ed compartió el mockup completo (desktop + móvil) y se alineó el sitio a él:
+
+- **Hero rediseñado** ([Hero.astro](astro-src/src/components/Hero.astro)): titular
+  del mockup ("Soluciones contables, tributarias y laborales para hacer crecer tu
+  negocio"), píldora superior, 3 checks, 3 CTAs (Agenda una consulta / Cotiza
+  ahora / Hablar por WhatsApp) y **foto del contador** con tarjeta flotante
+  "Más de 150+ empresas · 4.9/5 en Google".
+- **📸 FOTO PENDIENTE**: la foto real del contador NO está en el repo (solo llegó
+  dentro del mockup, no como archivo suelto). El Hero busca en build-time
+  `public/assets/contador.webp|jpg|png` y la usa automáticamente; mientras no
+  exista muestra `contador-placeholder.svg` (ilustración de marca). **Pedir a Ed
+  la foto real y guardarla como `astro-src/public/assets/contador.jpg`.**
+- **Metrics.astro → barra de confianza** del mockup (datos en `site.ts → trustbar`):
+  Google 4.9★ · SUNAT aliados estratégicos · Atención en S.J.M. y Lima
+  Metropolitana · +10 años. El array `metrics` viejo sigue en site.ts por si se
+  quiere recuperar.
+- **Nueva sección [Process.astro](astro-src/src/components/Process.astro)**
+  ("Nuestro proceso es simple y eficaz"): Diagnóstico → Propuesta → Ejecución →
+  Acompañamiento. Insertada tras Services en index.astro.
+- **Services: 6 → 10 tarjetas** según mockup + botón "Ver todos los servicios".
+  Iconos nuevos en Icon.astro (book, advisor, refund, gear, stamp, docs, badge,
+  calendar). Icon acepta ahora `class` o `cls`.
+- **WhyUs**: título "Tu tranquilidad, nuestro compromiso" + razones del mockup.
+- **Testimonios** (Claudia R., Jorge M., María L.) y **FAQ** (5 preguntas del
+  mockup) reemplazados.
+- **Datos nuevos en site.ts**: `addressRef` ("Alt. de Av. Pedro Miotta (cuadra 12)")
+  y `hoursSat` ("Sábados · 9:00 a.m. – 1:00 p.m.") aplicados en Contact, Coverage
+  y Footer.
+- Verificado en preview: DOM correcto, consola limpia, responsive 375 px sin
+  overflow, `npm run build` OK. (El screenshot del entorno sigue dando timeout.)
+
+## Qué se hizo en la sesión 2026-07-01 (creación)
 
 Se **creó el sitio desde cero** con **Astro 5**, siguiendo el manual de marca
 entregado (logo "A", paleta navy/azul/verde WhatsApp, tipografía Poppins) y el

@@ -5,8 +5,8 @@ import Icon from "./Icon.astro";
 const items = [
   { icon: "phone", label: "Teléfono / WhatsApp", value: site.phone, href: `tel:+51${site.phoneRaw}` },
   { icon: "mail", label: "Correo", value: site.email, href: `mailto:${site.email}` },
-  { icon: "pin", label: "Oficina", value: `${site.address}, S.J.M.`, href: null },
-  { icon: "clock", label: "Horario", value: site.hours, href: null },
+  { icon: "pin", label: "Oficina", value: `${site.address}, S.J.M. — Ref.: ${site.addressRef}`, href: null },
+  { icon: "clock", label: "Horario", value: `${site.hours} · ${site.hoursSat}`, href: null },
 ];
 ---
 

@@ -1,0 +1,83 @@
+---
+import { process } from "../data/site";
+---
+
+<section class="section section--gray" id="proceso">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Nuestro proceso es simple y eficaz</span>
+      <h2>Así trabajamos contigo</h2>
+      <p>Cuatro pasos claros, sin trámites confusos ni sorpresas.</p>
+    </div>
+
+    <ol class="process__grid">
+      {process.map((p, i) => (
+        <li class="process__item reveal">
+          <span class="process__num">{p.step}</span>
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+          {i < process.length - 1 && <span class="process__arrow" aria-hidden="true">→</span>}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: paso;
+  }
+  .process__item {
+    position: relative;
+    text-align: center;
+    padding: 10px 8px;
+  }
+  .process__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 18px rgba(31, 94, 255, 0.32);
+  }
+  .process__item h3 {
+    font-size: 1.08rem;
+    margin: 14px 0 6px;
+  }
+  .process__item p {
+    color: var(--gray-500);
+    font-size: 0.92rem;
+  }
+  .process__arrow {
+    position: absolute;
+    top: 12px;
+    right: -19px;
+    color: var(--gray-400);
+    font-size: 1.2rem;
+  }
+  @media (max-width: 900px) {
+    .process__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 20px;
+    }
+    .process__arrow {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .process__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

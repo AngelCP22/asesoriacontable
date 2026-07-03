@@ -7,8 +7,8 @@ import Icon from "./Icon.astro";
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Nuestros servicios</span>
-      <h2>Soluciones que impulsan tu negocio</h2>
-      <p>Un solo aliado para toda tu gestión contable, tributaria y laboral.</p>
+      <h2>Soluciones integrales para tu empresa</h2>
+      <p>Brindamos servicios contables, tributarios y laborales con altos estándares de calidad, tecnología y cumplimiento normativo.</p>
     </div>
 
     <div class="services__grid">
@@ -24,17 +24,26 @@ import Icon from "./Icon.astro";
         </article>
       ))}
     </div>
+
+    <div class="services__cta">
+      <a class="btn btn--ghost" href={waLink} target="_blank" rel="noopener">Ver todos los servicios</a>
+    </div>
   </div>
 </section>
 
 <style>
   .services__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .services__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
   }
   .service {
-    padding: 28px 26px;
+    padding: 24px 22px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -45,12 +54,12 @@ import Icon from "./Icon.astro";
     border-color: transparent;
   }
   .service h3 {
-    font-size: 1.2rem;
-    margin: 18px 0 10px;
+    font-size: 1.08rem;
+    margin: 16px 0 8px;
   }
   .service p {
     color: var(--gray-500);
-    font-size: 0.96rem;
+    font-size: 0.92rem;
     flex-grow: 1;
   }
   .service__link {

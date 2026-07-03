@@ -16,8 +16,10 @@ export const site = {
   whatsapp: "51930916115", // +51 (Perú)
   email: "asesoriacontabletributaria13@gmail.com",
   address: "Calle Ciro Alegría Mz. E Lt. 6, Manuel Scorza",
+  addressRef: "Alt. de Av. Pedro Miotta (cuadra 12)",
   district: "San Juan de Miraflores — Lima",
   hours: "Lun – Vie · 9:00 a.m. – 6:00 p.m.",
+  hoursSat: "Sábados · 9:00 a.m. – 1:00 p.m.",
   mapsQuery: "Manuel Scorza, San Juan de Miraflores, Lima, Perú",
   // Reputación
   rating: "4.9",
@@ -62,59 +64,99 @@ export const metrics = [
   { value: "98%", label: "Cumplimiento a tiempo" },
 ];
 
+// Barra de confianza bajo el hero (mockup: Google · SUNAT · zona · experiencia)
+export const trustbar = [
+  { icon: "google", title: "4.9 ★★★★★", label: "Reseñas en Google" },
+  { icon: "shield", title: "SUNAT", label: "Aliados estratégicos" },
+  {
+    icon: "pin",
+    title: "Atención en San Juan de Miraflores",
+    label: "y Lima Metropolitana",
+  },
+  { icon: "badge", title: "Más de 10 años", label: "de experiencia" },
+];
+
+// Proceso de trabajo (mockup: "Nuestro proceso es simple y eficaz")
+export const process = [
+  { step: "1", title: "Diagnóstico", text: "Conocemos tu negocio y necesidades." },
+  { step: "2", title: "Propuesta", text: "Diseñamos la mejor solución a tu medida." },
+  { step: "3", title: "Ejecución", text: "Implementamos y gestionamos con precisión." },
+  { step: "4", title: "Acompañamiento", text: "Te apoyamos continuamente para que sigas creciendo." },
+];
+
 export const services = [
   {
     icon: "ledger",
-    title: "Contabilidad Integral",
-    text: "Contabilidad mensual completa, fiscal y laboral. Libros electrónicos PLE y SIRE, estados financieros y reportes de gestión.",
+    title: "Contabilidad",
+    text: "Llevamos tu contabilidad manual y computarizada (RUS, RER, MYPE, RG).",
   },
   {
     icon: "tax",
-    title: "Tributación",
-    text: "Declaraciones mensuales (RENTA, IGV, PLAME) y planeamiento tributario para optimizar tu carga fiscal de forma legal.",
+    title: "Declaraciones Mensuales",
+    text: "Elaboración y presentación de declaraciones (RENTA, IGV, PLAME y más).",
+  },
+  {
+    icon: "book",
+    title: "Libros Electrónicos",
+    text: "Registro y presentación de Libros Electrónicos PLE/SIRE con total cumplimiento.",
   },
   {
     icon: "labor",
-    title: "Laboral",
-    text: "Asesoría laboral, planillas, T-Registro, liquidaciones, CTS, gratificaciones y cumplimiento ante SUNAFIL.",
+    title: "Planillas y Laboral",
+    text: "Gestión de planillas, CTS, gratificaciones, boletas y cumplimiento laboral.",
   },
   {
     icon: "company",
     title: "Constitución de Empresas",
-    text: "Constitución de empresas EIRL, SAC, SRL y formalización de negocios: desde la minuta hasta el RUC activo.",
+    text: "Constitución de empresas EIRL, SAC, SRL y obtención de RUC.",
   },
   {
-    icon: "finance",
-    title: "Financiero",
-    text: "Estrategias financieras, flujo de caja y análisis de rentabilidad para que tomes mejores decisiones y crezcas.",
+    icon: "advisor",
+    title: "Asesoría Tributaria",
+    text: "Planeamiento tributario, atención a fiscalizaciones SUNAT y defensa de contingencias.",
   },
   {
-    icon: "more",
-    title: "Otros Servicios",
-    text: "Fraccionamientos, devoluciones, trámites ante SUNAT y gestiones administrativas en general.",
+    icon: "refund",
+    title: "Devoluciones y Trámites",
+    text: "Devoluciones de IGV, percepciones, detracciones y otros trámites ante SUNAT.",
+  },
+  {
+    icon: "gear",
+    title: "Outsourcing Contable",
+    text: "Externaliza tu contabilidad con seguridad, eficiencia y ahorro.",
+  },
+  {
+    icon: "stamp",
+    title: "Legalización de Libros",
+    text: "Legalización de libros contables y actualización de contabilidades atrasadas.",
+  },
+  {
+    icon: "docs",
+    title: "Trámites en General",
+    text: "Trámites ante SUNAT, ESSALUD, AFP, Municipalidad y más.",
   },
 ];
 
 export const reasons = [
   {
     icon: "person",
-    title: "Atención personalizada",
+    title: "Asesoría personalizada y cercana",
     text: "Soluciones hechas a la medida de tu negocio, con un asesor asignado que conoce tu caso.",
   },
   {
     icon: "shield",
-    title: "Experiencia y confianza",
-    text: "Más de 10 años asesorando a empresas y emprendedores de Lima con resultados comprobados.",
+    title: "Experiencia y actualización constante",
+    text: "Más de 10 años asesorando a empresas y emprendedores de Lima, siempre al día con la normativa.",
   },
   {
-    icon: "chart",
-    title: "Resultados comprobados",
-    text: "Estrategias que generan ahorro real y crecimiento sostenible, siempre dentro del marco legal.",
+    icon: "gear",
+    title: "Tecnología y procesos eficientes",
+    text: "Herramientas digitales y procesos ordenados para entregarte reportes puntuales y sin errores.",
   },
   {
     icon: "handshake",
-    title: "Acompañamiento continuo",
-    text: "Estamos contigo en cada etapa del negocio, con comunicación clara y constante.",
+    title: "Confidencialidad y ética profesional",
+    text: "Tu información se maneja con absoluta reserva y dentro del marco legal, sin excepciones.",
   },
 ];
 
@@ -126,42 +168,42 @@ export const values = [
 
 export const testimonials = [
   {
-    name: "Mario P.",
-    role: "Emprendedor",
-    text: "Excelente servicio, muy profesionales y siempre atentos. Nos han ayudado a mantener todo en orden y ahorrar impuestos.",
-  },
-  {
-    name: "Carlos R.",
+    name: "Claudia R.",
     role: "Gerente General",
-    text: "Gran asesoría contable y laboral. Responden rápido y explican todo claro. 100% recomendados.",
+    text: "Excelente servicio, siempre atentos y cumplen con todo a tiempo. Gracias a su asesoría mi empresa está al día y sin contingencias.",
   },
   {
-    name: "Lucía M.",
-    role: "Dueña de negocio",
-    text: "Formalicé mi empresa con ellos y todo fue rapidísimo. Ahora mi contabilidad está al día cada mes.",
+    name: "Jorge M.",
+    role: "Emprendedor",
+    text: "Profesionales comprometidos y muy responsables. Nos ayudaron a regularizar nuestra empresa y optimizar nuestros impuestos.",
+  },
+  {
+    name: "María L.",
+    role: "Administradora",
+    text: "La mejor decisión fue externalizar nuestra contabilidad. Ahorro de tiempo y total confianza en su trabajo.",
   },
 ];
 
 export const faqs = [
   {
-    q: "¿Qué documentos necesito para iniciar?",
-    a: "Para empezar solo necesitamos tu RUC (o DNI si aún no estás formalizado), tus comprobantes de compras y ventas del período, y tus accesos SUNAT. Nosotros te guiamos paso a paso.",
+    q: "¿Qué tipo de empresas pueden contratar sus servicios?",
+    a: "Trabajamos con personas naturales con negocio, emprendedores, MYPES y empresas consolidadas en cualquier régimen (NRUS, RER, RMT o General).",
   },
   {
-    q: "¿Cuál es el costo de sus servicios?",
-    a: "El costo depende del volumen de operaciones y del régimen de tu empresa. Te damos una cotización clara y sin sorpresas tras una evaluación inicial gratuita por WhatsApp.",
+    q: "¿En qué distritos brindan servicios?",
+    a: "Atendemos de forma presencial en San Juan de Miraflores y Lima Sur, y de manera 100% virtual en toda Lima Metropolitana y provincias, con la misma calidad de servicio.",
   },
   {
-    q: "¿Atienden empresas de todos los tamaños?",
-    a: "Sí. Trabajamos con personas naturales con negocio, emprendedores, MYPES y empresas ya consolidadas en cualquier régimen (NRUS, RER, RMT o General).",
+    q: "¿Cómo puedo enviar mi información contable?",
+    a: "Puedes enviarla por WhatsApp, correo electrónico o acercarte a nuestra oficina. También coordinamos recojos y accesos digitales (SUNAT SOL) según lo que te resulte más cómodo.",
   },
   {
-    q: "¿Puedo recibir asesoría 100% virtual?",
-    a: "Claro. Atendemos de forma presencial en San Juan de Miraflores y también 100% virtual en toda Lima y provincias, con la misma calidad de servicio.",
+    q: "¿Qué pasa si tengo una fiscalización de SUNAT?",
+    a: "Te acompañamos durante todo el proceso: revisamos tu documentación, preparamos los descargos y atendemos los requerimientos de SUNAT para minimizar contingencias.",
   },
   {
-    q: "¿Con qué frecuencia recibo mis reportes?",
-    a: "Entregamos tus estados financieros y reportes de impuestos cada mes, antes de los vencimientos SUNAT, para que siempre sepas cómo va tu negocio.",
+    q: "¿Puedo solicitar una cotización sin compromiso?",
+    a: "Claro que sí. Escríbenos por WhatsApp y te damos una cotización clara y sin sorpresas tras una evaluación inicial gratuita, según el volumen y régimen de tu empresa.",
   },
 ];
 

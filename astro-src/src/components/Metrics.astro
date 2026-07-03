@@ -1,62 +1,90 @@
 ---
-import { metrics } from "../data/site";
+import { trustbar } from "../data/site";
+import Icon from "./Icon.astro";
 ---
 
-<section class="metrics">
-  <div class="container metrics__grid">
-    {metrics.map((m) => (
-      <div class="metrics__item reveal">
-        <span class="metrics__value">{m.value}</span>
-        <span class="metrics__label">{m.label}</span>
+<section class="trust">
+  <div class="container trust__grid">
+    {trustbar.map((t) => (
+      <div class="trust__item reveal">
+        {t.icon === "google" ? (
+          <svg class="trust__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.5-.2-2.3H12v4.4h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.5z"/><path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.4 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.6 14.7a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4z"/><path fill="#EA4335" d="M12 4.8c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 6.9l3.8 3a6.9 6.9 0 0 1 6.4-5z"/></svg>
+        ) : (
+          <Icon name={t.icon} cls="trust__icon" />
+        )}
+        <div>
+          <strong class:list={["trust__title", { "trust__title--stars": t.icon === "google" }]}>{t.title}</strong>
+          <span class="trust__label">{t.label}</span>
+        </div>
       </div>
     ))}
   </div>
 </section>
 
 <style>
-  .metrics {
+  .trust {
     background: var(--navy);
     color: #fff;
   }
-  .metrics__grid {
+  .trust__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    padding: 40px 0;
+    padding: 26px 0;
   }
-  .metrics__item {
-    text-align: center;
+  .trust__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
     position: relative;
   }
-  .metrics__item:not(:last-child)::after {
+  .trust__item:not(:last-child)::after {
     content: "";
     position: absolute;
     right: -10px;
-    top: 10%;
-    height: 80%;
+    top: 12%;
+    height: 76%;
     width: 1px;
     background: rgba(255, 255, 255, 0.14);
   }
-  .metrics__value {
-    display: block;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    font-weight: 700;
+  .trust__item :global(.trust__icon) {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
     color: var(--blue-light);
-    line-height: 1;
   }
-  .metrics__label {
+  .trust__title {
     display: block;
-    margin-top: 8px;
-    font-size: 0.92rem;
+    font-size: 0.98rem;
+    line-height: 1.25;
+  }
+  .trust__title--stars {
+    color: #ffc531;
+  }
+  .trust__label {
+    display: block;
+    font-size: 0.82rem;
     color: #cfe0ff;
   }
-  @media (max-width: 720px) {
-    .metrics__grid {
+  @media (max-width: 900px) {
+    .trust__grid {
       grid-template-columns: 1fr 1fr;
-      gap: 30px 12px;
+      gap: 22px 12px;
     }
-    .metrics__item:nth-child(2)::after {
+    .trust__item {
+      justify-content: flex-start;
+    }
+    .trust__item:nth-child(2)::after {
       display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .trust__grid {
+      grid-template-columns: 1fr;
+    }
+    .trust__item::after {
+      display: none !important;
     }
   }
 </style>
