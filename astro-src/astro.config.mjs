@@ -1,11 +1,9 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// Despliegue a GitHub Pages como repo de proyecto.
-// Si el repo o el usuario cambian, ajusta `site` y `base` (una sola línea cada uno).
+// Despliegue en Cloudflare Pages con dominio propio.
 export default defineConfig({
-  site: "https://angelcp22.github.io",
-  base: "/asesoriacontable",
+  site: "https://solucionestacontable.com",
   trailingSlash: "always",
   integrations: [sitemap()],
 });

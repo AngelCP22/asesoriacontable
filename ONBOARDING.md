@@ -1,7 +1,16 @@
 # ONBOARDING / Traspaso — Asesoría Contable
 
-> Estado al **2026-07-02**. Landing del estudio de Asesoría Contable, Tributaria y
+> Estado al **2026-07-03**. Landing del estudio de Asesoría Contable, Tributaria y
 > Laboral (Lima Sur). Léelo antes de tocar nada.
+
+## Sesión 2026-07-03 — despliegue Cloudflare Pages
+
+- Configurado `astro-src/astro.config.mjs` para dominio propio: `site = "https://solucionestacontable.com"` y sin `base` de GitHub Pages.
+- Actualizado `astro-src/public/robots.txt` para que el sitemap apunte a `https://solucionestacontable.com/sitemap-index.xml`.
+- Creado Cloudflare Pages Project **`solucionestacontable`**, conectado a GitHub (`AngelCP22/asesoriacontable`) igual que `ctoy`: Git Provider = GitHub, rama `main`, previews desactivados, comentarios PR desactivados.
+- Build config en Cloudflare: `root_dir = astro-src`, `build_command = npm run build`, `destination_dir = dist`.
+- Dominios agregados: `solucionestacontable.com` y `www.solucionestacontable.com`.
+- Eliminado el workflow viejo de GitHub Pages para evitar publicaciones con rutas/base incorrectas.
 
 ## Qué se hizo en la sesión 2026-07-03 (foto HD + set de iconos + extras)
 
@@ -96,7 +105,7 @@ mockup de referencia (14 secciones web / 10 móvil).
 - ✅ SEO: Open Graph, JSON-LD `AccountingService` (rating 4.9, horario), sitemap,
   `robots.txt`. Accesibilidad: skip-link, `aria-*`, foco visible, reduced-motion.
 - ✅ Página legal **`/privacidad/`** (Ley N.° 29733) enlazada en el footer.
-- ✅ Workflow **`.github/workflows/deploy.yml`** listo para GitHub Pages.
+- ✅ Cloudflare Pages Project **`solucionestacontable`** conectado al repo para deploy automático desde `main`.
 
 ### Decisión sobre el mapa (importante)
 El mockup mostraba un mapa embebido. Se **evitó el iframe de Google Maps** a
@@ -110,7 +119,7 @@ Embed API* con API key en `Coverage.astro`.
 ```bash
 cd astro-src
 npm install
-npm run dev      # http://127.0.0.1:4321/asesoriacontable/   (¡con la ruta base!)
+npm run dev      # http://127.0.0.1:4321/
 npm run build    # genera astro-src/dist/
 ```
 Node ≥ 20.3. Ya se corrió `npm install` y `npm run build` con éxito localmente
@@ -126,24 +135,20 @@ Node ≥ 20.3. Ya se corrió `npm install` y `npm run build` con éxito localmen
 - Nota: la herramienta de *screenshot* del entorno da timeout (limitación del
   renderer, no del sitio); la verificación se hizo por DOM/red/consola.
 
-## PENDIENTE — lo hace el dueño del repo en GitHub (subir + publicar)
+## Despliegue actual — Cloudflare Pages
 
-El repo ya está inicializado en git con un commit inicial. Falta **solo**:
+Cloudflare Pages está conectado al repo **`AngelCP22/asesoriacontable`** con el proyecto **`solucionestacontable`**.
 
-1. Crear el repositorio en GitHub con el nombre **`asesoriacontable`**
-   (si usas otro nombre, cambia `base` en `astro-src/astro.config.mjs`).
-2. Conectar y subir:
-   ```bash
-   git remote add origin https://github.com/<usuario>/asesoriacontable.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. En GitHub → **Settings → Pages → Source = "GitHub Actions"**.
-4. El workflow publica solo en cada push a `main`:
-   `https://<usuario>.github.io/asesoriacontable/`.
+```text
+Production branch: main
+Root directory: astro-src
+Build command: npm run build
+Output directory: dist
+Preview deployments: none
+Custom domains: solucionestacontable.com, www.solucionestacontable.com
+```
 
-> Ajusta `site: "https://<usuario>.github.io"` en `astro.config.mjs` si el usuario
-> de GitHub no es `angelcp22`.
+Cada push a `main` dispara el build de producción en Cloudflare. Si se cambia el dominio, ajustar `site` en `astro-src/astro.config.mjs` y el sitemap en `astro-src/public/robots.txt`.
 
 ### Datos que conviene confirmar con el cliente
 - Enlaces reales de redes sociales (hoy `#` en `site.ts → social`).
