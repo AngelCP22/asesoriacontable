@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 // Si el repo o el usuario cambian, ajusta `site` y `base` (una sola línea cada uno).
 export default defineConfig({
   site: "https://angelcp22.github.io",
-  base: "/asesoria-contable",
+  base: "/asesoriacontable",
   trailingSlash: "always",
   integrations: [sitemap()],
 });

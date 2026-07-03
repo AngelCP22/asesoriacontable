@@ -31,10 +31,10 @@ asesoria-contable/
 ```bash
 cd astro-src
 npm install          # primera vez
-npm run dev          # http://127.0.0.1:4321/asesoria-contable/
+npm run dev          # http://127.0.0.1:4321/asesoriacontable/
 ```
 
-> El sitio vive bajo la ruta base `/asesoria-contable/` (para GitHub Pages como
+> El sitio vive bajo la ruta base `/asesoriacontable/` (para GitHub Pages como
 > repo de proyecto). Abre esa URL, **no** la raíz.
 
 Build de producción:
@@ -57,10 +57,10 @@ dentro de los componentes.
 
 Ver **[ONBOARDING.md](ONBOARDING.md)** — resumen:
 
-1. Subir el repo a GitHub con el nombre **`asesoria-contable`**.
+1. Subir el repo a GitHub con el nombre **`asesoriacontable`**.
 2. En *Settings → Pages → Source* elegir **GitHub Actions**.
 3. Al hacer `push` a `main`, el workflow compila y publica en
-   `https://<usuario>.github.io/asesoria-contable/`.
+   `https://<usuario>.github.io/asesoriacontable/`.
 
 Si el nombre del repo o el usuario cambian, ajustar `site` y `base` en
 [`astro-src/astro.config.mjs`](astro-src/astro.config.mjs).

@@ -110,7 +110,7 @@ Embed API* con API key en `Coverage.astro`.
 ```bash
 cd astro-src
 npm install
-npm run dev      # http://127.0.0.1:4321/asesoria-contable/   (¡con la ruta base!)
+npm run dev      # http://127.0.0.1:4321/asesoriacontable/   (¡con la ruta base!)
 npm run build    # genera astro-src/dist/
 ```
 Node ≥ 20.3. Ya se corrió `npm install` y `npm run build` con éxito localmente
@@ -130,17 +130,17 @@ Node ≥ 20.3. Ya se corrió `npm install` y `npm run build` con éxito localmen
 
 El repo ya está inicializado en git con un commit inicial. Falta **solo**:
 
-1. Crear el repositorio en GitHub con el nombre **`asesoria-contable`**
+1. Crear el repositorio en GitHub con el nombre **`asesoriacontable`**
    (si usas otro nombre, cambia `base` en `astro-src/astro.config.mjs`).
 2. Conectar y subir:
    ```bash
-   git remote add origin https://github.com/<usuario>/asesoria-contable.git
+   git remote add origin https://github.com/<usuario>/asesoriacontable.git
    git branch -M main
    git push -u origin main
    ```
 3. En GitHub → **Settings → Pages → Source = "GitHub Actions"**.
 4. El workflow publica solo en cada push a `main`:
-   `https://<usuario>.github.io/asesoria-contable/`.
+   `https://<usuario>.github.io/asesoriacontable/`.
 
 > Ajusta `site: "https://<usuario>.github.io"` en `astro.config.mjs` si el usuario
 > de GitHub no es `angelcp22`.
