@@ -1,9 +1,10 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// Despliegue en Cloudflare Pages con dominio propio.
+const siteUrl = process.env.SITE_URL || "https://solucionestacontable.com";
+
 export default defineConfig({
-  site: "https://solucionestacontable.com",
+  site: siteUrl.replace(/\/+$/, ""),
   trailingSlash: "always",
   integrations: [sitemap()],
 });

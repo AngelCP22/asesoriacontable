@@ -5,8 +5,8 @@
 
 ## Sesión 2026-07-03 — despliegue Cloudflare Pages
 
-- Configurado `astro-src/astro.config.mjs` para dominio propio: `site = "https://solucionestacontable.com"` y sin `base` de GitHub Pages.
-- Actualizado `astro-src/public/robots.txt` para que el sitemap apunte a `https://solucionestacontable.com/sitemap-index.xml`.
+- Configurado `astro-src/astro.config.mjs` para Cloudflare Pages con `site` por defecto en `https://solucionestacontable.com`, sin `base` de GitHub Pages y con override opcional `SITE_URL`.
+- `robots.txt` ahora se genera desde `astro-src/src/pages/robots.txt.ts` para que el sitemap apunte al dominio configurado.
 - Creado Cloudflare Pages Project **`solucionestacontable`**, conectado a GitHub (`AngelCP22/asesoriacontable`) igual que `ctoy`: Git Provider = GitHub, rama `main`, previews desactivados, comentarios PR desactivados.
 - Build config en Cloudflare: `root_dir = astro-src`, `build_command = npm run build`, `destination_dir = dist`.
 - Dominios agregados: `solucionestacontable.com` y `www.solucionestacontable.com`.
@@ -148,7 +148,7 @@ Preview deployments: none
 Custom domains: solucionestacontable.com, www.solucionestacontable.com
 ```
 
-Cada push a `main` dispara el build de producción en Cloudflare. Si se cambia el dominio, ajustar `site` en `astro-src/astro.config.mjs` y el sitemap en `astro-src/public/robots.txt`.
+Cada push a `main` dispara el build de producción en Cloudflare. Si se cambia el dominio, definir `SITE_URL=https://dominio-final.com` en las variables de entorno de Cloudflare Pages y volver a desplegar. El `robots.txt` se genera desde `astro-src/src/pages/robots.txt.ts`.
 
 ### Datos que conviene confirmar con el cliente
 - Enlaces reales de redes sociales (hoy `#` en `site.ts → social`).

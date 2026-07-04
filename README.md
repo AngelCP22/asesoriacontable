@@ -1,25 +1,26 @@
-# Asesoría Contable, Tributaria y Laboral
+# Asesoria Contable, Tributaria y Laboral
 
-Sitio web (landing page) del estudio de **Asesoría Contable, Tributaria y Laboral** en Lima Sur.
-Construido con **Astro 5**, sin frameworks de UI: HTML/CSS nativo + islas de JavaScript mínimas.
+Sitio web del estudio de Asesoria Contable, Tributaria y Laboral en Lima Sur.
+Construido con Astro 5, HTML/CSS nativo y JavaScript minimo.
 
-Marca: navy `#082B66` · azul eléctrico `#1F5EFF` · verde WhatsApp `#25D366` · tipografía **Poppins**.
+Marca: navy `#082B66`, azul electrico `#1F5EFF`, verde WhatsApp `#25D366`,
+tipografia Poppins.
 
-## Estructura del repositorio
+## Estructura
 
 ```text
 asesoria-contable/
-├── astro-src/               ← CÓDIGO FUENTE (lo único que se edita)
-│  ├── src/
-│  │  ├── components/        Header, Hero, Services, Faq, Footer, …
-│  │  ├── data/site.ts       Datos centralizados (teléfono, servicios, FAQ, zonas…)
-│  │  ├── layouts/BaseLayout.astro
-│  │  ├── pages/             index.astro · privacidad.astro
-│  │  ├── scripts/           menu, faq, reveal, scrollspy, to-top, whatsapp-form…
-│  │  └── styles/global.css  Tokens de marca y utilidades
-│  ├── public/assets/        logo.svg, logo-mark.svg, favicon, imágenes
-│  └── astro.config.mjs      site para Cloudflare Pages
-├── ONBOARDING.md            Traspaso para el siguiente agente
+├── astro-src/               <- codigo fuente
+│   ├── src/
+│   │   ├── components/
+│   │   ├── data/site.ts
+│   │   ├── layouts/BaseLayout.astro
+│   │   ├── pages/
+│   │   ├── scripts/
+│   │   └── styles/global.css
+│   ├── public/assets/
+│   └── astro.config.mjs
+├── ONBOARDING.md
 └── README.md
 ```
 
@@ -27,31 +28,30 @@ asesoria-contable/
 
 ```bash
 cd astro-src
-npm install          # primera vez
+npm install
 npm run dev          # http://127.0.0.1:4321/
 ```
 
-Build de producción:
+Build de produccion:
 
 ```bash
 npm run build        # genera astro-src/dist/
 npm run preview      # sirve el build
 ```
 
-Requisitos: **Node ≥ 20.3**.
+Requisitos: Node >= 20.3.
 
 ## Editar contenido
 
-Casi todo el texto vive en **[`astro-src/src/data/site.ts`](astro-src/src/data/site.ts)**:
-teléfono, WhatsApp, correo, dirección, horario, servicios, ventajas, testimonios,
-preguntas frecuentes, zonas de cobertura y artículos. **No hardcodear** estos datos
-dentro de los componentes.
+Casi todo el texto vive en [`astro-src/src/data/site.ts`](astro-src/src/data/site.ts):
+telefono, WhatsApp, correo, direccion, horario, servicios, ventajas, testimonios,
+preguntas frecuentes, zonas de cobertura y articulos.
 
 ## Publicar en Cloudflare Pages
 
-Proyecto Cloudflare Pages: **`solucionestacontable`**
+Proyecto Cloudflare Pages: `solucionestacontable`
 
-Configuración conectada al repo `AngelCP22/asesoriacontable`:
+Configuracion conectada al repo `AngelCP22/asesoriacontable`:
 
 ```text
 Production branch: main
@@ -62,11 +62,17 @@ Preview deployments: none
 Custom domains: solucionestacontable.com, www.solucionestacontable.com
 ```
 
-Si el dominio cambia, ajustar `site` en [`astro-src/astro.config.mjs`](astro-src/astro.config.mjs) y el sitemap de [`astro-src/public/robots.txt`](astro-src/public/robots.txt).
+El dominio canonical se toma de `SITE_URL` si existe. Si no existe, usa
+`https://solucionestacontable.com`. Si se cambia el dominio en Cloudflare, definir
+`SITE_URL=https://dominio-final.com` en las variables de entorno del proyecto y
+volver a desplegar.
 
-## Notas técnicas
+El `robots.txt` se genera desde `astro-src/src/pages/robots.txt.ts` para que el
+sitemap apunte al mismo dominio configurado en `site`.
 
-- **SEO**: metadatos Open Graph, `sitemap-index.xml`, `robots.txt` y datos estructurados JSON-LD (`AccountingService`).
-- **Accesibilidad**: skip-link, `aria-*` en menú/FAQ/formulario, foco visible, `prefers-reduced-motion`.
-- **Sin dependencias externas de runtime**: la única llamada a terceros es Google Fonts (Poppins). El mapa es un panel propio que enlaza a Google Maps.
-- **Formulario de contacto**: valida y arma un mensaje de WhatsApp (no requiere backend).
+## Notas tecnicas
+
+- SEO: Open Graph, `sitemap-index.xml`, `robots.txt` y JSON-LD `AccountingService`.
+- Accesibilidad: skip-link, `aria-*`, foco visible y `prefers-reduced-motion`.
+- La unica llamada externa de runtime es Google Fonts.
+- El formulario de contacto valida y arma un mensaje de WhatsApp, sin backend.
