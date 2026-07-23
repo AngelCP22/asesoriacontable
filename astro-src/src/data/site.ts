@@ -7,7 +7,7 @@ export const site = {
   name: "Asesoría Contable",
   legalName: "Asesoría Contable, Tributaria y Laboral",
   tagline: "Tributaria & Laboral",
-  domain: "asesoriacontable",
+  domain: "solucionestacontable.com",
   description:
     "Asesoría contable, tributaria y laboral en Lima Sur. Contabilidad, declaraciones SUNAT (RENTA, IGV, PLAME), planillas, constitución de empresas y más. Atención cercana y confiable.",
   // Contacto
