@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  title = `${site.legalName} | Lima Sur`,
+  title = site.legalName,
   description = site.description,
 } = Astro.props;
 
@@ -47,7 +47,7 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
       rel="stylesheet"
     />
 
-    <!-- Datos estructurados (SEO local) -->
+    <!-- Datos estructurados -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "AccountingService",
@@ -55,14 +55,7 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
       description: site.description,
       telephone: `+51${site.phoneRaw}`,
       email: site.email,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: site.address,
-        addressLocality: "San Juan de Miraflores",
-        addressRegion: "Lima",
-        addressCountry: "PE",
-      },
-      areaServed: "Lima Sur",
+      areaServed: "PE",
       founder: {
         "@type": "Person",
         name: site.accountant.name,

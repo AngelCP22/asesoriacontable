@@ -336,3 +336,21 @@ ul {
   width: 20px;
   height: 20px;
 }
+
+@media (max-width: 520px) {
+  .to-top {
+    display: none;
+  }
+
+  .wa-float {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .wa-float svg {
+    width: 28px;
+    height: 28px;
+  }
+}

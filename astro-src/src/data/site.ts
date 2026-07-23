@@ -9,18 +9,14 @@ export const site = {
   tagline: "Tributaria & Laboral",
   domain: "solucionestacontable.com",
   description:
-    "Asesoría contable, tributaria y laboral en Lima Sur. Contabilidad, declaraciones SUNAT (RENTA, IGV, PLAME), planillas, constitución de empresas y más. Atención cercana y confiable.",
+    "Asesoría contable, tributaria y laboral. Contabilidad, declaraciones SUNAT (RENTA, IGV, PLAME), planillas, constitución de empresas y más. Atención cercana y confiable.",
   // Contacto
   phone: "930 916 115",
   phoneRaw: "930916115",
   whatsapp: "51930916115", // +51 (Perú)
   email: "asesoriacontabletributaria13@gmail.com",
-  address: "Calle Ciro Alegría Mz. E Lt. 6, Manuel Scorza",
-  addressRef: "Alt. de Av. Pedro Miotta (cuadra 12)",
-  district: "San Juan de Miraflores — Lima",
   hours: "Lun – Vie · 9:00 a.m. – 6:00 p.m.",
   hoursSat: "Sábados · 9:00 a.m. – 1:00 p.m.",
-  mapsQuery: "Manuel Scorza, San Juan de Miraflores, Lima, Perú",
   // Titular del estudio (del afiche oficial)
   accountant: {
     name: "Yakel Marcatoma Pozo",
@@ -50,15 +46,6 @@ export const nav = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-export const zones = [
-  "San Juan de Miraflores",
-  "Villa María del Triunfo",
-  "Villa El Salvador",
-  "Chorrillos",
-  "Surco",
-  "La Molina",
-];
-
 export const metrics = [
   { value: "+200", label: "Clientes satisfechos" },
   { value: "+10", label: "Años de experiencia" },
@@ -75,9 +62,9 @@ export const trustbar = [
   },
   { icon: "shield", title: "SUNAT", label: "Atención a fiscalizaciones" },
   {
-    icon: "pin",
-    title: "Atención en San Juan de Miraflores",
-    label: "y Lima Metropolitana",
+    icon: "gear",
+    title: "Procesos automatizados",
+    label: "reportes e indicadores eficientes",
   },
   { icon: "person", title: "Más de 10 años", label: "de experiencia" },
 ];
@@ -152,7 +139,7 @@ export const reasons = [
   {
     icon: "shield",
     title: "Experiencia y actualización constante",
-    text: "Más de 10 años asesorando a empresas y emprendedores de Lima, siempre al día con la normativa.",
+    text: "Más de 10 años asesorando a empresas y emprendedores, siempre al día con la normativa.",
   },
   {
     icon: "gear",
@@ -196,12 +183,12 @@ export const faqs = [
     a: "Trabajamos con personas naturales con negocio, emprendedores, MYPES y empresas consolidadas en cualquier régimen (NRUS, RER, RMT o General).",
   },
   {
-    q: "¿En qué distritos brindan servicios?",
-    a: "Atendemos de forma presencial en San Juan de Miraflores y Lima Sur, y de manera 100% virtual en toda Lima Metropolitana y provincias, con la misma calidad de servicio.",
+    q: "¿Atienden de manera virtual?",
+    a: "Sí. Brindamos atención virtual con la misma calidad de servicio, coordinando cada etapa por canales digitales.",
   },
   {
     q: "¿Cómo puedo enviar mi información contable?",
-    a: "Puedes enviarla por WhatsApp, correo electrónico o acercarte a nuestra oficina. También coordinamos recojos y accesos digitales (SUNAT SOL) según lo que te resulte más cómodo.",
+    a: "Puedes enviarla por WhatsApp o correo electrónico. También coordinamos accesos digitales (SUNAT SOL) según lo que te resulte más cómodo.",
   },
   {
     q: "¿Qué pasa si tengo una fiscalización de SUNAT?",
