@@ -41,7 +41,6 @@ export const nav = [
   { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Reseñas", href: "#resenas" },
   { label: "Preguntas", href: "#faq" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -155,24 +154,6 @@ export const values = [
   "Ética y transparencia",
   "Compromiso con resultados",
   "Comunicación clara y constante",
-];
-
-export const testimonials = [
-  {
-    name: "Claudia R.",
-    role: "Gerente General",
-    text: "Excelente servicio, siempre atentos y cumplen con todo a tiempo. Gracias a su asesoría mi empresa está al día y sin contingencias.",
-  },
-  {
-    name: "Jorge M.",
-    role: "Emprendedor",
-    text: "Profesionales comprometidos y muy responsables. Nos ayudaron a regularizar nuestra empresa y optimizar nuestros impuestos.",
-  },
-  {
-    name: "María L.",
-    role: "Administradora",
-    text: "La mejor decisión fue externalizar nuestra contabilidad. Ahorro de tiempo y total confianza en su trabajo.",
-  },
 ];
 
 export const faqs = [

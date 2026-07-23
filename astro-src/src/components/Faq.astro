@@ -1,5 +1,6 @@
 ---
 import { faqs, waLink } from "../data/site";
+import WhatsAppIcon from "./WhatsAppIcon.astro";
 ---
 
 <section class="section" id="faq">
@@ -8,7 +9,9 @@ import { faqs, waLink } from "../data/site";
       <span class="eyebrow">Preguntas frecuentes</span>
       <h2>Resolvemos tus dudas</h2>
       <p>¿No encuentras lo que buscas? Escríbenos y te respondemos al instante.</p>
-      <a class="btn btn--wa" href={waLink} target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+      <a class="btn btn--wa" href={waLink} target="_blank" rel="noopener">
+        <WhatsAppIcon /> Preguntar por WhatsApp
+      </a>
     </div>
 
     <div class="faq__list">
