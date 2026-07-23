@@ -79,54 +79,52 @@ export const process = [
 
 export const services = [
   {
-    icon: "calc",
-    title: "Contabilidad",
-    text: "Llevamos tu contabilidad manual y computarizada (RUS, RER, MYPE, RG).",
+    icon: "gear",
+    title: "Contabilidad automatizada",
+    text: "Centralizamos y procesamos tu información contable con flujos digitales que reducen tareas manuales y errores.",
+    benefit: "Menos tiempo y reprocesos",
   },
   {
-    icon: "declarations",
-    title: "Declaraciones Mensuales",
-    text: "Elaboración y presentación de declaraciones (RENTA, IGV, PLAME y más).",
-  },
-  {
-    icon: "laptop",
-    title: "Libros Electrónicos",
-    text: "Registro y presentación de Libros Electrónicos PLE/SIRE con total cumplimiento.",
-  },
-  {
-    icon: "payroll",
-    title: "Planillas y Laboral",
-    text: "Gestión de planillas, CTS, gratificaciones, boletas y cumplimiento laboral.",
-  },
-  {
-    icon: "company",
-    title: "Constitución de Empresas",
-    text: "Constitución de empresas EIRL, SAC, SRL y obtención de RUC.",
-  },
-  {
-    icon: "scales",
-    title: "Asesoría Tributaria",
-    text: "Planeamiento tributario, atención a fiscalizaciones SUNAT y defensa de contingencias.",
+    icon: "tax",
+    title: "Preliminar de impuestos",
+    text: "Calculamos anticipadamente IGV, Renta y otras obligaciones para que conozcas cuánto pagar antes del vencimiento.",
+    benefit: "Decisiones anticipadas",
   },
   {
     icon: "refund",
-    title: "Devoluciones y Trámites",
-    text: "Devoluciones de IGV, percepciones, detracciones y otros trámites ante SUNAT.",
+    title: "Conciliación bancaria automática",
+    text: "Cruzamos movimientos bancarios, ventas y compras para detectar diferencias y mantener tus saldos actualizados.",
+    benefit: "Control sin cruces manuales",
   },
   {
-    icon: "handshake",
-    title: "Outsourcing Contable",
-    text: "Externaliza tu contabilidad con seguridad, eficiencia y ahorro.",
+    icon: "chart",
+    title: "Reportes e indicadores",
+    text: "Transformamos tus datos en reportes claros de ingresos, gastos, impuestos y resultados para gestionar mejor.",
+    benefit: "Información para decidir",
   },
   {
-    icon: "bank",
-    title: "Legalización de Libros",
-    text: "Legalización de libros contables y actualización de contabilidades atrasadas.",
+    icon: "payroll",
+    title: "Planillas automatizadas",
+    text: "Procesamos remuneraciones, beneficios, boletas y PLAME con controles que reducen tiempos y observaciones.",
+    benefit: "Cálculos rápidos y consistentes",
+  },
+  {
+    icon: "calendar",
+    title: "Alertas de cumplimiento",
+    text: "Organizamos vencimientos tributarios, laborales y documentarios para anticiparnos a multas y contingencias.",
+    benefit: "Obligaciones siempre a tiempo",
   },
   {
     icon: "docs",
-    title: "Trámites en General",
-    text: "Trámites ante SUNAT, ESSALUD, AFP, Municipalidad y más.",
+    title: "Gestión documental digital",
+    text: "Ordenamos comprobantes y documentos contables en un flujo digital trazable, accesible y fácil de consultar.",
+    benefit: "Documentos bajo control",
+  },
+  {
+    icon: "handshake",
+    title: "Outsourcing contable digital",
+    text: "Integramos el proceso contable de tu empresa en un servicio remoto, medible y orientado a reducir costos operativos.",
+    benefit: "Eficiencia con menor costo",
   },
 ];
 
