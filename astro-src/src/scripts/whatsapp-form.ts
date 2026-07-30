@@ -1,4 +1,6 @@
 // Formulario de contacto: valida y arma un mensaje de WhatsApp.
+import { trackWhatsapp } from "./analytics";
+
 export function initWhatsappForm() {
   const form = document.querySelector<HTMLFormElement>("[data-wa-form]");
   if (!form) return;
@@ -51,6 +53,7 @@ export function initWhatsappForm() {
       message.value.trim()
     )}`;
     if (status) status.textContent = "Abriendo WhatsApp…";
+    trackWhatsapp("contact_form", "Enviar por WhatsApp");
     window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
     form.reset();
   });
