@@ -96,9 +96,11 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
       import { initToTop } from "../scripts/to-top";
       import { initScrollspy } from "../scripts/scrollspy";
       import { initWhatsappForm } from "../scripts/whatsapp-form";
+      import { initAnalytics } from "../scripts/analytics";
 
       const boot = () => {
         for (const init of [
+          initAnalytics,
           initMenu,
           initHeaderShadow,
           initFaq,

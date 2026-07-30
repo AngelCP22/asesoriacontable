@@ -76,3 +76,11 @@ sitemap apunte al mismo dominio configurado en `site`.
 - Accesibilidad: skip-link, `aria-*`, foco visible y `prefers-reduced-motion`.
 - La unica llamada externa de runtime es Google Fonts.
 - El formulario de contacto valida y arma un mensaje de WhatsApp, sin backend.
+
+## Analítica propia
+
+El sitio registra páginas vistas y clics en WhatsApp mediante
+`astro-src/functions/api/analytics.js` y una base D1 enlazada como
+`ANALYTICS_DB`. La implementación no guarda dirección IP ni los datos escritos
+en el formulario. Consulta [`docs/ANALITICA.md`](docs/ANALITICA.md) para conocer
+las métricas, privacidad y criterios de reporte.
