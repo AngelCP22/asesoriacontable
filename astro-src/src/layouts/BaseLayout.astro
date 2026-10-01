@@ -2,20 +2,54 @@
 import "../styles/global.css";
 import { site, waLink } from "../data/site";
 import WhatsAppIcon from "../components/WhatsAppIcon.astro";
+import PrivacyChoice from "../components/PrivacyChoice.astro";
 
 interface Props {
   title?: string;
   description?: string;
+  /** Ruta relativa dentro de public/. Por defecto, la marca del sitio. */
+  ogImage?: string;
+  /** true en páginas que no deben indexarse (404, gracias, etc.). */
+  noindex?: boolean;
+  /** Reemplaza el JSON-LD por defecto. Acepta un nodo o varios. */
+  jsonLd?: unknown | unknown[];
 }
 
 const {
   title = site.legalName,
   description = site.description,
+  ogImage,
+  noindex = false,
+  jsonLd,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
+const ogImageUrl = new URL(`${base}${ogImage ?? "assets/logo-mark.svg"}`, Astro.site).href;
+
+// Entidad del estudio. Es el nodo por defecto y solo se emite en las páginas
+// que no pasan su propio jsonLd, para no duplicar la entidad en todo el sitio.
+const defaultJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  name: site.legalName,
+  description: site.description,
+  telephone: `+51${site.phoneRaw}`,
+  email: site.email,
+  areaServed: "PE",
+  founder: {
+    "@type": "Person",
+    name: site.accountant.name,
+    jobTitle: "Contador Público Colegiado",
+  },
+  openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"],
+};
+
+const jsonLdNodes = jsonLd === undefined
+  ? [defaultJsonLd]
+  : Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd];
 ---
 
 <!doctype html>
@@ -29,14 +63,14 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#082b66" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content="es_PE" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -49,25 +83,22 @@ const ogImage = new URL(`${base}assets/logo-mark.svg`, Astro.site).href;
     />
 
     <!-- Datos estructurados -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "AccountingService",
-      name: site.legalName,
-      description: site.description,
-      telephone: `+51${site.phoneRaw}`,
-      email: site.email,
-      areaServed: "PE",
-      founder: {
-        "@type": "Person",
-        name: site.accountant.name,
-        jobTitle: "Contador Público Colegiado",
-      },
-      openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"],
-    })} />
+    {jsonLdNodes.map((node) => (
+      <script type="application/ld+json" set:html={JSON.stringify(node).replace(/</g, "\\u003c")} />
+    ))}
+
+    <!-- Sin JS, los bloques .reveal quedan en opacity:0 y la página se ve
+         vacía. Esto la deja legible igual. -->
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <slot />
+    <PrivacyChoice />
 
     <!-- WhatsApp flotante -->
     <a

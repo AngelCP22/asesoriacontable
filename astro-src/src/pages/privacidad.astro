@@ -11,6 +11,7 @@ import { site } from "../data/site";
     <div class="container legal__inner">
       <span class="eyebrow">Legal</span>
       <h1>Política de Privacidad</h1>
+      <p>Actualizada el 30 de septiembre de 2026.</p>
       <p class="legal__intro">
         En <strong>{site.legalName}</strong> respetamos tu privacidad y protegemos
         tus datos personales conforme a la Ley N.° 29733 — Ley de Protección de
@@ -18,64 +19,32 @@ import { site } from "../data/site";
       </p>
 
       <h2>1. Responsable del tratamiento</h2>
-      <p>Los datos que nos proporcionas son tratados por {site.legalName}. Contacto: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <p>El responsable es {site.accountant.name}, titular del estudio {site.legalName}. Contacto para asuntos de privacidad: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
 
       <h2>2. Datos que recopilamos</h2>
       <p>Recopilamos únicamente los datos que envías voluntariamente a través del formulario de contacto o de WhatsApp: nombre, número de celular y el mensaje con tu consulta.</p>
-      <p>Para conocer el uso del sitio registramos identificadores aleatorios de navegador y sesión, página visitada, navegador, país y el botón de WhatsApp utilizado. No almacenamos tu dirección IP ni enviamos a la analítica el nombre, celular o mensaje escritos en el formulario.</p>
+      <p>Solo si aceptas las métricas registramos identificadores aleatorios de navegador y sesión, página visitada, tipo de navegador, país y el botón de WhatsApp utilizado. La base de analítica no almacena tu dirección IP ni el nombre, celular o mensaje del formulario. Los proveedores de alojamiento y fuentes reciben información técnica, como la dirección IP, necesaria para atender la conexión.</p>
 
       <h2>3. Finalidad</h2>
-      <p>Usamos los datos de contacto exclusivamente para responder tu consulta, elaborar cotizaciones y brindarte nuestros servicios de asesoría contable, tributaria y laboral. Las métricas anónimas nos permiten conocer cuántas visitas recibe el sitio y qué botones de WhatsApp son más útiles. No vendemos tus datos.</p>
+      <p>Usamos los datos que decides enviarnos para responder tu consulta y elaborar una cotización; si contratas un servicio, te informaremos de los tratamientos necesarios para prestarlo. Las métricas opcionales utilizan identificadores seudónimos para conocer las visitas y los botones más útiles. No vendemos tus datos ni usamos tus consultas para campañas sin autorización.</p>
 
       <h2>4. Conservación</h2>
-      <p>Conservamos los datos proporcionados voluntariamente mientras exista una relación comercial o mientras no solicites su eliminación. Los eventos de analítica se eliminan después de 180 días y el identificador aleatorio del navegador rota en ese mismo plazo.</p>
+      <p>Conservamos los datos de contacto mientras sean necesarios para atender tu solicitud o relación contractual y, cuando corresponda, durante los plazos legales de conservación. Puedes solicitar su supresión. La limpieza de eventos de analítica anteriores a 180 días se ejecuta periódicamente al recibirse nuevas visitas; el identificador del navegador caduca a los 180 días.</p>
 
       <h2>5. Tus derechos (ARCO)</h2>
-      <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiéndonos a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición, o retirar tu consentimiento, escribiendo a <a href={`mailto:${site.email}`}>{site.email}</a>. Indica tu solicitud y un medio para responderte; solo pediremos la información necesaria para verificar tu identidad. También puedes acudir a la Autoridad Nacional de Protección de Datos Personales del Perú.</p>
 
       <h2>6. Servicios de terceros</h2>
-      <p>El sitio está alojado en Cloudflare Pages y usa una base D1 de Cloudflare para guardar las métricas descritas. También utiliza Google Fonts para la tipografía y WhatsApp como canal de contacto.</p>
+      <p>Usamos Cloudflare Pages y D1 para alojamiento y métricas, Google Fonts para tipografía y WhatsApp para contacto. Estos proveedores pueden procesar datos fuera del Perú conforme a sus políticas y las garantías aplicables. El formulario prepara el mensaje en tu navegador y abre WhatsApp; no envía sus campos a un servidor del estudio. El envío final lo decides allí. También puedes escribirnos por correo.</p>
+      <p>Consulta las políticas de <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener" target="_blank">Cloudflare</a>, <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google</a> y <a href="https://www.whatsapp.com/legal/privacy-policy" rel="noopener" target="_blank">WhatsApp</a>.</p>
 
       <h2>7. Preferencias de privacidad</h2>
-      <p>La analítica respeta las señales Global Privacy Control y Do Not Track del navegador. Si alguna está activa, el sitio no genera eventos de analítica para esa visita.</p>
+      <p>Puedes aceptar o rechazar las métricas y cambiar tu decisión desde «Preferencias de privacidad» al pie de cada página. Rechazarlas no impide usar el sitio. Guardamos tu elección en el navegador; al rechazarlas eliminamos los identificadores locales de analítica. Respetamos Global Privacy Control y Do Not Track incluso si anteriormente aceptaste las métricas. La retirada no borra automáticamente eventos anteriores: puedes solicitarlo por correo.</p>
+      <h2>8. Información reservada</h2>
+      <p>Esta web no incluye un portal de clientes ni el programa interno SIRE. No ingreses claves SOL, contraseñas o tokens en el formulario. El tratamiento de documentos tributarios y accesos se coordina por separado al contratar el servicio.</p>
 
       <p class="legal__back"><a href={import.meta.env.BASE_URL}>← Volver al inicio</a></p>
     </div>
   </main>
   <Footer />
 </BaseLayout>
-
-<style>
-  .legal {
-    padding: 60px 0 80px;
-  }
-  .legal__inner {
-    max-width: 780px;
-  }
-  .legal h1 {
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    margin: 8px 0 20px;
-  }
-  .legal__intro {
-    font-size: 1.1rem;
-    color: var(--gray-500);
-    margin-bottom: 12px;
-  }
-  .legal h2 {
-    font-size: 1.2rem;
-    margin: 30px 0 8px;
-  }
-  .legal p {
-    color: var(--ink);
-    margin-bottom: 6px;
-    line-height: 1.7;
-  }
-  .legal a {
-    color: var(--blue);
-    font-weight: 500;
-  }
-  .legal__back {
-    margin-top: 36px;
-    font-weight: 600;
-  }
-</style>

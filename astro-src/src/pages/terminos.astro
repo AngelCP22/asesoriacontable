@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+<BaseLayout title={`Términos y condiciones | ${site.legalName}`} description="Condiciones de uso del sitio y de solicitud de los servicios del estudio contable.">
+  <Header />
+  <main id="contenido" class="legal">
+    <div class="container legal__inner">
+      <span class="eyebrow">Legal · Actualizado el 30 de septiembre de 2026</span>
+      <h1>Términos y condiciones</h1>
+      <p class="legal__intro">Estas condiciones explican el uso de la web de {site.legalName}, estudio dirigido por {site.accountant.name}, {site.accountant.cpc}. Puedes consultar cualquier duda en <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <h2>1. Información y consultas</h2>
+      <p>El sitio presenta nuestros servicios contables, tributarios y laborales. Su contenido es informativo y no sustituye la evaluación profesional de cada caso. La información aplicable se verifica con la normativa vigente al prestar el servicio.</p>
+      <h2>2. Contratación del servicio</h2>
+      <p>Enviar una consulta o abrir WhatsApp no contrata un servicio ni genera un cobro. Antes de comenzar un trabajo se acuerdan por escrito el alcance, los honorarios, los impuestos que correspondan, los plazos, los entregables y las condiciones de pago, modificación o cancelación. La evaluación inicial gratuita se limita al diagnóstico para preparar una propuesta.</p>
+      <h2>3. Información y autorizaciones del cliente</h2>
+      <p>Para prestar un servicio necesitamos documentación completa y veraz y las autorizaciones correspondientes. Los plazos dependen también de su entrega y de la disponibilidad de las plataformas involucradas. Una consulta no autoriza presentar declaraciones, modificar registros ni actuar en nombre del cliente.</p>
+      <h2>4. SIRE y plataformas de terceros</h2>
+      <p>Somos un estudio independiente de SUNAT. Las referencias a SIRE, RVIE y RCE describen servicios contables y no una certificación o respaldo institucional. La web no ofrece acceso a un sistema de clientes ni permite ingresar credenciales de SUNAT. Las herramientas de trabajo se gestionan por separado y su uso requiere autorización específica.</p>
+      <h2>5. Uso seguro del sitio</h2>
+      <p>No introduzcas contraseñas, claves SOL, tokens ni documentos tributarios en el formulario público. Coordinaremos un canal adecuado si el servicio requiere información reservada. No se permite usar esta web para suplantar identidades, distribuir contenido malicioso o intentar acceder a información ajena.</p>
+      <h2>6. Privacidad y servicios externos</h2>
+      <p>El tratamiento de datos se explica en la <a href={`${import.meta.env.BASE_URL}privacidad/`}>Política de Privacidad</a>. Al abrir WhatsApp se accede a un servicio de un tercero, sujeto también a sus propias condiciones. Puedes contactarnos por correo si prefieres otro canal.</p>
+      <h2>7. Contenido y disponibilidad</h2>
+      <p>Los textos y elementos propios del sitio están protegidos por las normas aplicables. Las marcas de terceros pertenecen a sus titulares. Procuramos mantener el contenido y la web actualizados; pueden existir interrupciones o errores que corregiremos al detectarlos. No garantizamos resultados tributarios específicos ni la disponibilidad de plataformas externas.</p>
+      <h2>8. Atención de incidencias y derechos</h2>
+      <p>Para consultas, disconformidades o solicitudes relacionadas con un servicio, escribe a <a href={`mailto:${site.email}`}>{site.email}</a> o llama al {site.phone}. Estas condiciones no limitan los derechos irrenunciables que reconoce la legislación peruana ni el acceso a las autoridades competentes.</p>
+      <h2>9. Cambios</h2>
+      <p>Publicaremos cualquier modificación con su fecha de actualización. Un cambio en esta página no modifica por sí solo los servicios ya contratados; estos se rigen por lo acordado y por la legislación aplicable.</p>
+      <p class="legal__back"><a href={import.meta.env.BASE_URL}>← Volver al inicio</a></p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

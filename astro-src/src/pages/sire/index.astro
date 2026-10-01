@@ -1,0 +1,388 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppIcon from "../../components/WhatsAppIcon.astro";
+import { site } from "../../data/site";
+import {
+  sireMeta,
+  sireHero,
+  estadoConexion,
+  sireSecciones,
+  queNoHacemos,
+  comoEmpezamos,
+  faqSire,
+  sireCierre,
+} from "../../data/sire";
+
+const base = import.meta.env.BASE_URL;
+const siteUrl = Astro.site?.href ?? `https://${site.domain}/`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// Service + FAQPage + BreadcrumbList. La entidad AccountingService completa se
+// queda solo en la home para no duplicarla en todo el sitio.
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Servicio mensual de SIRE: RVIE y RCE",
+    serviceType:
+      "Llevado del Registro de Ventas e Ingresos Electrónico (RVIE) y del Registro de Compras Electrónico (RCE)",
+    description: sireMeta.description,
+    url: canonical,
+    areaServed: { "@type": "Country", name: "Perú" },
+    audience: { "@type": "BusinessAudience" },
+    provider: {
+      "@type": "AccountingService",
+      name: site.legalName,
+      telephone: `+51${site.phoneRaw}`,
+      email: site.email,
+      url: siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqSire.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "SIRE", item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={sireMeta.title} description={sireMeta.description} jsonLd={jsonLd}>
+  <Header />
+  <main id="contenido">
+    <!-- Hero -->
+    <section class="section sire-hero">
+      <div class="container sire-hero__inner">
+        <span class="eyebrow">{sireHero.eyebrow}</span>
+        <h1>{sireHero.h1}</h1>
+
+        <!-- El estado va inmediatamente bajo el titular y con peso visual
+             comparable. No moverlo al pie ni reducirle el tamaño. -->
+        <p class="sire-hero__badge">
+          Conexión automática con los servicios web de SUNAT: <strong>aún no operativa</strong>.
+          El servicio mensual de SIRE sí opera hoy.
+        </p>
+
+        <p class="sire-hero__sub">{sireHero.subtitulo}</p>
+
+        <div class="sire-hero__cta">
+          <a
+            class="btn btn--wa"
+            href={sireHero.ctaPrimario.href}
+            target="_blank"
+            rel="noopener"
+            data-analytics-source={sireHero.ctaPrimario.source}
+          >
+            <WhatsAppIcon />
+            {sireHero.ctaPrimario.texto}
+          </a>
+          <a class="btn btn--ghost" href={sireHero.ctaSecundario.href}>
+            {sireHero.ctaSecundario.texto}
+          </a>
+        </div>
+
+        <p class="sire-hero__privacidad">
+          {sireHero.privacidad}{" "}
+          <a href={`${base}privacidad/`}>Ver política de privacidad</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Estado declarado de la integración -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="estado reveal">
+          <h2 class="estado__titulo">{estadoConexion.titulo}</h2>
+          <p class="estado__destacado">{estadoConexion.destacado}</p>
+          {estadoConexion.parrafos.map((p) => <p class="estado__p">{p}</p>)}
+          <p class="estado__sello">
+            Estado revisado el {estadoConexion.revisadoEl} por {estadoConexion.revisadoPor}.
+            Cuando cambie, cambia esta línea con su fecha.
+          </p>
+          <a
+            class="btn btn--ghost"
+            href={estadoConexion.cta.href}
+            target="_blank"
+            rel="noopener"
+            data-analytics-source={estadoConexion.cta.source}
+          >
+            {estadoConexion.cta.texto}
+          </a>
+          <p class="estado__nota">
+            {estadoConexion.cta.nota} {estadoConexion.notaDatos}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secciones de contenido -->
+    {sireSecciones.map((sec, i) => (
+      <section class:list={["section", { "section--gray": i % 2 === 1 }]} id={sec.id}>
+        <div class="container sire__bloque reveal">
+          <h2>{sec.heading}</h2>
+          <p class="sire__cuerpo">{sec.cuerpo}</p>
+          <ul class="sire__lista">
+            {sec.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+          {sec.nota && <p class="sire__nota">{sec.nota}</p>}
+          {sec.cta && (
+            <a
+              class="btn btn--wa"
+              href={sec.cta.href}
+              target="_blank"
+              rel="noopener"
+              data-analytics-source={sec.cta.source}
+            >
+              <WhatsAppIcon />
+              {sec.cta.texto}
+            </a>
+          )}
+        </div>
+      </section>
+    ))}
+
+    <!-- Qué no hacemos -->
+    <section class="section section--gray">
+      <div class="container sire__bloque reveal">
+        <h2>{queNoHacemos.heading}</h2>
+        <p class="sire__cuerpo">{queNoHacemos.cuerpo}</p>
+        <ul class="sire__lista sire__lista--no">
+          {queNoHacemos.items.map((t) => <li>{t}</li>)}
+        </ul>
+        <p class="sire__nota">{queNoHacemos.nota}</p>
+      </div>
+    </section>
+
+    <!-- Cómo empezamos -->
+    <section class="section">
+      <div class="container sire__bloque reveal">
+        <h2>{comoEmpezamos.heading}</h2>
+        <p class="sire__cuerpo">{comoEmpezamos.cuerpo}</p>
+        <ol class="sire__pasos">
+          {comoEmpezamos.pasos.map((p) => <li>{p}</li>)}
+        </ol>
+        <p class="sire__nota">{comoEmpezamos.nota}</p>
+      </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <section class="section section--gray">
+      <div class="container sire__bloque reveal">
+        <h2>Preguntas frecuentes</h2>
+        <div class="sire__faq">
+          {faqSire.map((f) => (
+            <details class="sire__faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="section sire-cierre">
+      <div class="container sire-cierre__inner reveal">
+        <h2>{sireCierre.titulo}</h2>
+        <p>{sireCierre.texto}</p>
+        <div class="sire-hero__cta">
+          <a
+            class="btn btn--wa"
+            href={sireCierre.ctaPrimario.href}
+            target="_blank"
+            rel="noopener"
+            data-analytics-source={sireCierre.ctaPrimario.source}
+          >
+            <WhatsAppIcon />
+            {sireCierre.ctaPrimario.texto}
+          </a>
+          <a class="btn btn--light" href={sireCierre.ctaCorreo.href}>
+            {sireCierre.ctaCorreo.texto}
+          </a>
+          <a class="btn btn--light" href={sireCierre.ctaTelefono.href}>
+            {sireCierre.ctaTelefono.texto}
+          </a>
+        </div>
+        <p class="sire-cierre__nota">
+          {sireCierre.ctaCorreo.nota} Atendemos {site.hours.toLowerCase()} y {site.hoursSat.toLowerCase()}.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .sire-hero {
+    background: linear-gradient(180deg, var(--gray-50) 0%, #fff 100%);
+  }
+  .sire-hero__inner {
+    max-width: 860px;
+  }
+  .sire-hero h1 {
+    font-size: clamp(1.9rem, 4.2vw, 2.7rem);
+    line-height: 1.2;
+    margin: 10px 0 18px;
+  }
+  /* El descargo tiene el mismo cuerpo que el subtítulo, a propósito. */
+  .sire-hero__badge {
+    border-left: 4px solid var(--blue);
+    background: #fff;
+    padding: 14px 18px;
+    margin: 0 0 20px;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--ink);
+    border-radius: 0 10px 10px 0;
+  }
+  .sire-hero__sub {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--gray-500);
+    margin-bottom: 26px;
+  }
+  .sire-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .sire-hero__privacidad {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: var(--gray-500);
+  }
+
+  .estado {
+    border: 2px solid var(--blue);
+    background: var(--gray-50);
+    border-radius: 14px;
+    padding: 28px 30px;
+  }
+  .estado__titulo {
+    font-size: 1.15rem;
+    margin: 0 0 6px;
+  }
+  .estado__destacado {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 16px;
+  }
+  .estado__p {
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .estado__sello {
+    font-size: 0.88rem;
+    color: var(--gray-500);
+    margin: 18px 0 20px;
+  }
+  .estado__nota {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-top: 12px;
+  }
+
+  .sire__bloque {
+    max-width: 860px;
+  }
+  .sire__bloque h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    margin-bottom: 14px;
+  }
+  .sire__cuerpo {
+    line-height: 1.75;
+    color: var(--gray-500);
+    margin-bottom: 18px;
+  }
+  .sire__lista,
+  .sire__pasos {
+    margin: 0 0 18px 1.15rem;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+  .sire__lista li,
+  .sire__pasos li {
+    margin-bottom: 8px;
+  }
+  .sire__lista--no li::marker {
+    color: var(--gray-400);
+  }
+  .sire__nota {
+    font-size: 0.93rem;
+    color: var(--gray-500);
+    font-style: italic;
+    border-left: 3px solid var(--gray-200, #e5e7eb);
+    padding-left: 14px;
+    margin-bottom: 20px;
+  }
+
+  .sire__faq-item {
+    border-bottom: 1px solid var(--gray-200, #e5e7eb);
+    padding: 16px 0;
+  }
+  .sire__faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+  .sire__faq-item p {
+    margin-top: 12px;
+    line-height: 1.75;
+    color: var(--gray-500);
+  }
+
+  .sire-cierre__inner {
+    max-width: 860px;
+  }
+  .sire-cierre h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    margin-bottom: 10px;
+  }
+  .sire-cierre p {
+    color: var(--gray-500);
+    line-height: 1.7;
+    margin-bottom: 22px;
+  }
+  .sire-cierre__nota {
+    margin-top: 18px;
+    font-size: 0.88rem;
+  }
+
+  /* Estos CTA llevan frases largas a propósito (dicen qué pasa al pulsarlos).
+     El .btn global es nowrap, así que aquí se permite que envuelvan. */
+  .sire-hero__cta .btn,
+  .estado .btn,
+  .sire__bloque .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    .estado {
+      padding: 22px 18px;
+    }
+    .sire-hero__cta .btn,
+    .estado .btn,
+    .sire__bloque .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

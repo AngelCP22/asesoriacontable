@@ -2,6 +2,7 @@
 import { site, nav, waLink } from "../data/site";
 import WhatsAppIcon from "./WhatsAppIcon.astro";
 const base = import.meta.env.BASE_URL;
+const path = Astro.url.pathname;
 ---
 
 <header class="header" data-header>
@@ -20,14 +21,23 @@ const base = import.meta.env.BASE_URL;
   <!-- Navegación -->
   <div class="navbar">
     <div class="container navbar__inner">
-      <a class="brand" href="#inicio" aria-label={site.legalName}>
+      <a class="brand" href={`${base}#inicio`} aria-label={site.legalName}>
         <img src={`${base}assets/logo.svg`} alt={site.legalName} width="200" height="53" />
       </a>
 
       <nav class="nav" aria-label="Principal">
-        {nav.map((item) => (
-          <a class="nav__link" href={item.href} data-nav-link>{item.label}</a>
-        ))}
+        {nav.map((item) => {
+          const activa = Boolean(item.match && path.startsWith(item.match));
+          return (
+            <a
+              class:list={["nav__link", { "is-active": activa }]}
+              href={`${base}${item.href}`}
+              data-nav-link
+              data-spy={item.spy}
+              aria-current={activa ? "page" : undefined}
+            >{item.label}</a>
+          );
+        })}
       </nav>
 
       <div class="navbar__cta">
@@ -46,7 +56,7 @@ const base = import.meta.env.BASE_URL;
   <!-- Panel móvil -->
   <div class="menu-panel" id="menu-panel" data-menu-panel>
     <nav class="menu-panel__nav" aria-label="Móvil">
-      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {nav.map((item) => <a href={`${base}${item.href}`}>{item.label}</a>)}
     </nav>
     <a class="btn btn--wa" href={waLink} target="_blank" rel="noopener" style="width:100%">
       <WhatsAppIcon /> Agenda por WhatsApp

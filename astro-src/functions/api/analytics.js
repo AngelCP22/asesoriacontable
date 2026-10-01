@@ -9,6 +9,11 @@ function json(body, status = 200) {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
       "X-Content-Type-Options": "nosniff",
+      "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+      "X-Frame-Options": "DENY",
+      "Strict-Transport-Security": "max-age=31536000",
+      "Referrer-Policy": "no-referrer",
+      "Allow": "POST",
     },
   });
 }
@@ -41,10 +46,10 @@ function isAllowedRequest(request) {
   if (request.headers.get("Sec-Fetch-Site") === "cross-site") return false;
 
   const origin = request.headers.get("Origin");
-  if (!origin) return true;
+  if (!origin) return false;
   try {
     const parsed = new URL(origin);
-    return parsed.protocol === "https:" && validSiteHost(parsed.hostname);
+    return parsed.origin === target.origin;
   } catch {
     return false;
   }
@@ -90,13 +95,18 @@ function browserName(userAgent, isBot) {
   return "Otro";
 }
 
-export function onRequestGet() {
+function onRequestGet() {
   return json({ error: "method_not_allowed" }, 405);
 }
 
-export async function onRequestPost(context) {
+export function onRequest(context) {
+  return context.request.method === "POST" ? onRequestPost(context) : onRequestGet();
+}
+
+async function onRequestPost(context) {
   const { request } = context;
   if (!isAllowedRequest(request)) return json({ error: "forbidden" }, 403);
+  if (request.headers.get("Content-Type")?.split(";")[0].trim().toLowerCase() !== "application/json") return json({ error: "unsupported_media_type" }, 415);
   if (!context.env.ANALYTICS_DB) return json({ error: "analytics_unavailable" }, 503);
 
   let body;
@@ -122,7 +132,7 @@ export async function onRequestPost(context) {
     !visitorId ||
     !sessionId ||
     !EVENT_NAMES.has(eventName) ||
-    !pagePath.startsWith("/")
+    !new Set(["/", "/sire/", "/privacidad/", "/terminos/", "/404"]).has(pagePath)
   ) {
     return json({ error: "invalid_event" }, 400);
   }

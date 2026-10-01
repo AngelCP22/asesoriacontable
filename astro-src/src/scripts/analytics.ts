@@ -13,6 +13,10 @@ type VisitorRecord = {
 const ENDPOINT = "/api/analytics";
 const VISITOR_KEY = "soluciones_analytics_visitor";
 const SESSION_KEY = "soluciones_analytics_session";
+const CONSENT_KEY = "soluciones_analytics_consent";
+function hasConsent(): boolean {
+  try { return localStorage.getItem(CONSENT_KEY) === "accepted"; } catch { return false; }
+}
 const VISITOR_TTL_MS = 180 * 24 * 60 * 60 * 1000;
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -70,14 +74,14 @@ function clean(value: string | undefined, maxLength: number): string | undefined
 }
 
 function send(eventName: AnalyticsEventName, properties: AnalyticsProperties = {}): void {
-  if (privacyOptOut()) return;
+  if (privacyOptOut() || !hasConsent()) return;
 
   const payload = JSON.stringify({
     event_id: randomId(),
     visitor_id: visitorId(),
     session_id: sessionId(),
     event_name: eventName,
-    page_path: window.location.pathname,
+    page_path: ["/", "/sire/", "/privacidad/", "/terminos/"].includes(window.location.pathname) ? window.location.pathname : "/404",
     properties: {
       source: clean(properties.source, 80),
       label: clean(properties.label, 120),
@@ -116,6 +120,28 @@ export function trackWhatsapp(source: string, label?: string): void {
 export function initAnalytics(): void {
   if (document.documentElement.dataset.analyticsReady === "true") return;
   document.documentElement.dataset.analyticsReady = "true";
+
+  const panel = document.querySelector<HTMLElement>("[data-privacy-choice]");
+  const clearIds = () => {
+    try { localStorage.removeItem(VISITOR_KEY); sessionStorage.removeItem(SESSION_KEY); } catch { /* Storage unavailable: no tracking. */ }
+  };
+  if (privacyOptOut() || !hasConsent()) clearIds();
+  try {
+    if (panel) panel.hidden = privacyOptOut() || localStorage.getItem(CONSENT_KEY) !== null;
+  } catch { if (panel) panel.hidden = true; }
+  document.querySelector("[data-privacy-accept]")?.addEventListener("click", () => {
+    try { localStorage.setItem(CONSENT_KEY, "accepted"); } catch { return; }
+    if (panel) panel.hidden = true;
+    send("page_view");
+  });
+  document.querySelector("[data-privacy-reject]")?.addEventListener("click", () => {
+    try { localStorage.setItem(CONSENT_KEY, "rejected"); } catch { /* Still clear IDs. */ }
+    clearIds();
+    if (panel) panel.hidden = true;
+  });
+  document.querySelector("[data-privacy-settings]")?.addEventListener("click", () => {
+    if (panel) { panel.hidden = false; panel.querySelector<HTMLButtonElement>("button")?.focus(); }
+  });
 
   send("page_view");
 

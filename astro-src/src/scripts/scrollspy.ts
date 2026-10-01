@@ -5,10 +5,13 @@ export function initScrollspy() {
   );
   if (!links.length) return;
 
+  // Solo las anclas participan del scrollspy. El enlace de una ruta (p. ej.
+  // /sire/) mantiene su "is-active" y no debe apagarse al hacer scroll.
+  const spyLinks = links.filter((l) => l.dataset.spy);
   const map = new Map<string, HTMLAnchorElement>();
   const sections: HTMLElement[] = [];
   links.forEach((link) => {
-    const id = link.getAttribute("href")?.replace("#", "");
+    const id = link.dataset.spy;
     if (!id) return;
     const section = document.getElementById(id);
     if (section) {
@@ -21,7 +24,7 @@ export function initScrollspy() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          links.forEach((l) => l.classList.remove("is-active"));
+          spyLinks.forEach((l) => l.classList.remove("is-active"));
           map.get(entry.target.id)?.classList.add("is-active");
         }
       });

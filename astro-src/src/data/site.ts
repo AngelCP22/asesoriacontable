@@ -37,20 +37,36 @@ export const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
   waMessage
 )}`;
 
-export const nav = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Preguntas", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
+export type NavItem = {
+  label: string;
+  /** Relativo a BASE_URL. El componente lo prefija: `${base}${href}`. */
+  href: string;
+  /** Id de la sección de la home. Solo para anclas; lo usa el scrollspy. */
+  spy?: string;
+  /** Prefijo de pathname. Solo para rutas; marca el enlace como activo. */
+  match?: string;
+};
+
+// OJO: href es RELATIVO a BASE_URL. Los componentes lo prefijan con `base`
+// (`${base}${item.href}`). No usar import.meta.env aquí: este módulo también
+// lo importan scripts de cliente y rompe el dev server.
+export const nav: NavItem[] = [
+  { label: "Inicio", href: "#inicio", spy: "inicio" },
+  { label: "Servicios", href: "#servicios", spy: "servicios" },
+  { label: "SIRE", href: "sire/", match: "/sire/" },
+  { label: "Nosotros", href: "#nosotros", spy: "nosotros" },
+  { label: "Preguntas", href: "#faq", spy: "faq" },
+  { label: "Contacto", href: "#contacto", spy: "contacto" },
 ];
 
-export const metrics = [
-  { value: "+200", label: "Clientes satisfechos" },
-  { value: "+10", label: "Años de experiencia" },
-  { value: "+50K", label: "Declaraciones presentadas" },
-  { value: "98%", label: "Cumplimiento a tiempo" },
-];
+// Nota legal fija del sitio. Va en el footer de todas las páginas: delimita
+// qué somos y qué no frente a SUNAT, y evita que las menciones a SIRE/RVIE/RCE
+// se lean como un aval institucional.
+export const legalDisclaimer =
+  "Asesoría Contable, Tributaria y Laboral es un estudio contable independiente. " +
+  "No es OSE ni PSE, y no está certificado, acreditado ni respaldado por SUNAT. " +
+  "Las menciones a SUNAT, SIRE, RVIE y RCE son referencias descriptivas de los " +
+  "trámites y registros que atendemos.";
 
 // Barra de confianza bajo el hero (CPC · SUNAT · zona · experiencia)
 export const trustbar = [
@@ -59,7 +75,7 @@ export const trustbar = [
     title: "Yakel Marcatoma Pozo",
     label: "Contador Público Colegiado · C.P.C. 8413",
   },
-  { icon: "shield", title: "SUNAT", label: "Atención a fiscalizaciones" },
+  { icon: "docs", title: "Fiscalizaciones", label: "Te acompañamos ante SUNAT" },
   {
     icon: "gear",
     title: "Procesos automatizados",

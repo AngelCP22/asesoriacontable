@@ -368,3 +368,43 @@ ul {
     height: 28px;
   }
 }
+
+/* ── Páginas de texto (privacidad, 404) ─────────────────────────── */
+.legal {
+  padding: 60px 0 80px;
+}
+.legal__inner {
+  overflow-wrap: anywhere;
+  max-width: 780px;
+}
+.legal h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin: 8px 0 20px;
+}
+.legal__intro {
+  font-size: 1.1rem;
+  color: var(--gray-500);
+  margin-bottom: 12px;
+}
+.legal h2 {
+  font-size: 1.2rem;
+  margin: 30px 0 8px;
+}
+.legal p {
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+.legal ul {
+  margin: 0 0 6px 1.1rem;
+  color: var(--ink);
+  line-height: 1.8;
+}
+.legal a {
+  color: var(--blue);
+  font-weight: 500;
+}
+.legal__back {
+  margin-top: 36px;
+  font-weight: 600;
+}

@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site, waLink } from "../data/site";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title={`Página no encontrada | ${site.legalName}`}
+  description="La página que buscas no existe o cambió de dirección."
+  noindex
+>
+  <Header />
+  <main id="contenido" class="legal">
+    <div class="container legal__inner">
+      <span class="eyebrow">Error 404</span>
+      <h1>Esta página no existe</h1>
+      <p class="legal__intro">
+        La dirección que abriste no corresponde a ninguna página de nuestro sitio.
+        Puede que el enlace esté mal escrito o que la página haya cambiado de dirección.
+      </p>
+
+      <h2>¿Qué buscabas?</h2>
+      <ul>
+        <li><a href={base}>Inicio</a> — quiénes somos y qué hacemos.</li>
+        <li><a href={`${base}#servicios`}>Servicios</a> — contabilidad, impuestos y planillas.</li>
+        <li><a href={`${base}#faq`}>Preguntas frecuentes</a> — las consultas más comunes.</li>
+        <li><a href={`${base}#contacto`}>Contacto</a> — cómo escribirnos.</li>
+      </ul>
+
+      <p>
+        Si llegaste hasta aquí desde un enlace nuestro, escríbenos por
+        <a href={waLink} target="_blank" rel="noopener">WhatsApp</a> y lo corregimos.
+      </p>
+
+      <p class="legal__back"><a href={base}>← Volver al inicio</a></p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

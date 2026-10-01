@@ -1,5 +1,8 @@
 # Dependencias
 node_modules/
+/sire-api/
+/Iniciar-SIRE.cmd
+/.claude/
 
 # Build de Astro
 astro-src/dist/
@@ -11,3 +14,15 @@ astro-src/.astro/
 Thumbs.db
 .env
 .env.*
+
+# La plantilla de variables SÍ se versiona (no lleva valores, solo nombres)
+!.env.example
+
+# Prueba de concepto SIRE (Python)
+__pycache__/
+*.py[cod]
+.venv/
+sire-api/descargas/
+sire-api/.pytest_cache/
+# PDFs oficiales de SUNAT: 74 MB, se re-descargan. Los .txt sí se versionan.
+sire-api/fuentes/pdf/

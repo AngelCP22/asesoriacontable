@@ -49,9 +49,7 @@ export function initWhatsappForm() {
       return;
     }
 
-    const text = `Hola, soy ${name.value.trim()} (Cel: ${digits}).%0A${encodeURIComponent(
-      message.value.trim()
-    )}`;
+    const text = encodeURIComponent(`Hola, soy ${name.value.trim()} (Cel: ${digits}).\n${message.value.trim()}`);
     if (status) status.textContent = "Abriendo WhatsApp…";
     trackWhatsapp("contact_form", "Enviar por WhatsApp");
     window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
