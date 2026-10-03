@@ -16,6 +16,7 @@ async function check(dir = '') {
     const content = await readFile(new URL(name, root), 'utf8');
     assert(!/(SUNAT_(CLIENT_SECRET|PASSWORD)|BEGIN (RSA |OPENSSH )?PRIVATE KEY|127\.0\.0\.1:8765|localhost:8765|X-Panel-Session)/i.test(content), `Private content in build: ${name}`);
     if (name.endsWith('.html')) {
+      assert(!/aún no operativa|integración pendiente|Estado de la conexión automática|Cuando cambie, cambia esta línea/i.test(content), `Internal development notice in public page: ${name}`);
       for (const script of content.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
         if (!/\bsrc=/.test(script[1])) hashes.add(`'sha256-${createHash('sha256').update(script[2]).digest('base64')}'`);
       }

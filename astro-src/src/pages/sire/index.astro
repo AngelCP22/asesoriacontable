@@ -7,9 +7,8 @@ import { site } from "../../data/site";
 import {
   sireMeta,
   sireHero,
-  estadoConexion,
   sireSecciones,
-  queNoHacemos,
+  condicionesServicio,
   comoEmpezamos,
   faqSire,
   sireCierre,
@@ -69,13 +68,6 @@ const jsonLd = [
         <span class="eyebrow">{sireHero.eyebrow}</span>
         <h1>{sireHero.h1}</h1>
 
-        <!-- El estado va inmediatamente bajo el titular y con peso visual
-             comparable. No moverlo al pie ni reducirle el tamaño. -->
-        <p class="sire-hero__badge">
-          Conexión automática con los servicios web de SUNAT: <strong>aún no operativa</strong>.
-          El servicio mensual de SIRE sí opera hoy.
-        </p>
-
         <p class="sire-hero__sub">{sireHero.subtitulo}</p>
 
         <div class="sire-hero__cta">
@@ -98,33 +90,6 @@ const jsonLd = [
           {sireHero.privacidad}{" "}
           <a href={`${base}privacidad/`}>Ver política de privacidad</a>.
         </p>
-      </div>
-    </section>
-
-    <!-- Estado declarado de la integración -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="estado reveal">
-          <h2 class="estado__titulo">{estadoConexion.titulo}</h2>
-          <p class="estado__destacado">{estadoConexion.destacado}</p>
-          {estadoConexion.parrafos.map((p) => <p class="estado__p">{p}</p>)}
-          <p class="estado__sello">
-            Estado revisado el {estadoConexion.revisadoEl} por {estadoConexion.revisadoPor}.
-            Cuando cambie, cambia esta línea con su fecha.
-          </p>
-          <a
-            class="btn btn--ghost"
-            href={estadoConexion.cta.href}
-            target="_blank"
-            rel="noopener"
-            data-analytics-source={estadoConexion.cta.source}
-          >
-            {estadoConexion.cta.texto}
-          </a>
-          <p class="estado__nota">
-            {estadoConexion.cta.nota} {estadoConexion.notaDatos}
-          </p>
-        </div>
       </div>
     </section>
 
@@ -154,15 +119,15 @@ const jsonLd = [
       </section>
     ))}
 
-    <!-- Qué no hacemos -->
+    <!-- Condiciones del servicio -->
     <section class="section section--gray">
       <div class="container sire__bloque reveal">
-        <h2>{queNoHacemos.heading}</h2>
-        <p class="sire__cuerpo">{queNoHacemos.cuerpo}</p>
-        <ul class="sire__lista sire__lista--no">
-          {queNoHacemos.items.map((t) => <li>{t}</li>)}
+        <h2>{condicionesServicio.heading}</h2>
+        <p class="sire__cuerpo">{condicionesServicio.cuerpo}</p>
+        <ul class="sire__lista">
+          {condicionesServicio.items.map((t) => <li>{t}</li>)}
         </ul>
-        <p class="sire__nota">{queNoHacemos.nota}</p>
+        <p class="sire__nota">{condicionesServicio.nota}</p>
       </div>
     </section>
 
@@ -237,17 +202,6 @@ const jsonLd = [
     line-height: 1.2;
     margin: 10px 0 18px;
   }
-  /* El descargo tiene el mismo cuerpo que el subtítulo, a propósito. */
-  .sire-hero__badge {
-    border-left: 4px solid var(--blue);
-    background: #fff;
-    padding: 14px 18px;
-    margin: 0 0 20px;
-    font-size: 1.02rem;
-    line-height: 1.6;
-    color: var(--ink);
-    border-radius: 0 10px 10px 0;
-  }
   .sire-hero__sub {
     font-size: 1.05rem;
     line-height: 1.75;
@@ -263,38 +217,6 @@ const jsonLd = [
     margin-top: 18px;
     font-size: 0.88rem;
     color: var(--gray-500);
-  }
-
-  .estado {
-    border: 2px solid var(--blue);
-    background: var(--gray-50);
-    border-radius: 14px;
-    padding: 28px 30px;
-  }
-  .estado__titulo {
-    font-size: 1.15rem;
-    margin: 0 0 6px;
-  }
-  .estado__destacado {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin: 0 0 16px;
-  }
-  .estado__p {
-    line-height: 1.75;
-    color: var(--ink);
-    margin-bottom: 12px;
-  }
-  .estado__sello {
-    font-size: 0.88rem;
-    color: var(--gray-500);
-    margin: 18px 0 20px;
-  }
-  .estado__nota {
-    font-size: 0.85rem;
-    color: var(--gray-500);
-    margin-top: 12px;
   }
 
   .sire__bloque {
@@ -318,9 +240,6 @@ const jsonLd = [
   .sire__lista li,
   .sire__pasos li {
     margin-bottom: 8px;
-  }
-  .sire__lista--no li::marker {
-    color: var(--gray-400);
   }
   .sire__nota {
     font-size: 0.93rem;

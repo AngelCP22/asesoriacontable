@@ -65,20 +65,13 @@ genera los hashes CSP de los scripts en el artefacto final.
 ⚠️ **Nunca añadir `/* /index.html 200` a `public/_redirects`**: reactiva el fallback de
 SPA de Cloudflare Pages y anula el 404 real.
 
-### La página /sire/ tiene reglas propias
+### Contenido de /sire/
 
-El texto vive en [`src/data/sire.ts`](astro-src/src/data/sire.ts). Cada afirmación debe
-tener evidencia previa conservada por el estudio. Resumen de lo que no se puede decir:
-
-- La conexión con las APIs de SUNAT **no está operativa** y se declara así, arriba y con
-  peso visual comparable al titular. No moverlo al pie ni reducirlo. Las pruebas internas
-  no equivalen a disponibilidad comercial ni a un portal público.
-- El software es de un **aliado externo**. Verbos permitidos: integramos, operamos,
-  configuramos. Prohibidos: construimos, desarrollamos, creamos, programamos.
-- "SUNAT" solo como palabra en una oración. Nunca logo, sello, escudo ni su paleta.
-  Registrar una app en su portal de APIs es autoservicio: no certifica ni acredita nada.
-- Nada de cifras, porcentajes, precios, plazos ni garantías absolutas sin registro que
-  las respalde.
+Describir el servicio, los entregables, el proceso y las condiciones para el cliente.
+Los estados de desarrollo y las decisiones de arquitectura pertenecen a documentación
+interna. No publicar disponibilidad de un portal o funciones sin validar, ni sustituir
+avisos internos por promesas comerciales falsas. Mantener la independencia de SUNAT
+y el tratamiento privado de accesos y documentos.
 
 ## Editar contenido
 
